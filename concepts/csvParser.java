@@ -38,6 +38,8 @@ public class test {
                 System.out.println("a error took place");
                 e.printStackTrace();
             }
+        }else {
+            System.out.println("no lines are set up for parsing. Call convertToCVSLine(String s) first");
         }
     }
 }
