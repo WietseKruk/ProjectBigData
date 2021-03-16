@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class test {
+public class csvParser {
     ArrayList<String> lines = new ArrayList<String>();
 
     public void convertToCVSLine(String[] data){
