@@ -13,29 +13,31 @@ public class test {
     }
 
     public void createCVS(String name) throws IOException {
-        String nameR = name + ".csv";
-        try {
-            File myfile = new File(name);
-            if(myfile.createNewFile()) {
-                System.out.println("File created: " + myfile.getName());
+        if(lines.size() > 0) {
+            String nameR = name + ".csv";
+            try {
+                File myfile = new File(name);
+                if(myfile.createNewFile()) {
+                    System.out.println("File created: " + myfile.getName());
 
-                //start writing in file here
-                FileWriter writer = new FileWriter(name);
-                for(int i = 0; i < lines.size(); i++) {
-                    writer.write(lines.get(i));
-                    writer.newLine();
+                    //start writing in file here
+                    FileWriter writer = new FileWriter(name);
+                    for(int i = 0; i < lines.size(); i++) {
+                        writer.write(lines.get(i));
+                        writer.newLine();
+                    }
+                    writer.close();
+                    System.out.println("Wrote to file successfully");
+
                 }
-                writer.close();
-                System.out.println("Wrote to file successfully");
+                else {
+                    System.out.println("File already exist");
+                }
 
+            }catch(IOException e) {
+                System.out.println("a error took place");
+                e.printStackTrace();
             }
-            else {
-                System.out.println("File already exist");
-            }
-
-        }catch(IOException e) {
-            System.out.println("a error took place");
-            e.printStackTrace();
         }
     }
 }
