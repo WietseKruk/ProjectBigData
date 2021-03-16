@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
@@ -9,7 +10,8 @@ public class ReadFile {
     public void FileReader(String filename){
         BufferedReader reader;
         try{
-            reader = new BufferedReader(new FileReader("src/" + filename));
+            reader = new BufferedReader(new FileReader("RegExParser/src/" + filename));
+            
             String line = reader.readLine();
             while(line != null){
                 //System.out.println(line);
