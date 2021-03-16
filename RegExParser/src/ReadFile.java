@@ -9,7 +9,7 @@ public class ReadFile {
     public void FileReader(String filename){
         BufferedReader reader;
         try{
-            reader = new BufferedReader(new FileReader("E:/Docs/School/P3/PBigData/ProjectBigData/RegExParser/src/" + filename));
+            reader = new BufferedReader(new FileReader("src/" + filename));
             String line = reader.readLine();
             while(line != null){
                 //System.out.println(line);
