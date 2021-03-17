@@ -10,7 +10,9 @@ public class ReadFile {
     public void FileReader(String filename){
         BufferedReader reader;
         try{
-            reader = new BufferedReader(new FileReader("RegExParser/src/" + filename));
+            File thisFile = new File(filename);
+
+            reader = new BufferedReader(new FileReader(thisFile.getAbsolutePath()));
             
             String line = reader.readLine();
             while(line != null){
