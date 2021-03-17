@@ -1,30 +1,37 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.io.FileWriter;
 
 public class csvParser {
     ArrayList<String> lines = new ArrayList<String>();
 
     public void convertToCVSLine(String[] data){
-        String s = Stream.of(data).map(this::escapeSpecialCharacters).
-                collect(Collectors.joining(","));
+        String s = new String();
+        for(int i = 0; i < data.length; i++){
+            s+=data[i];
+            if(i == data.length - 1) 
+                s+=", ";
+        }
 
-	    lines.add(s);
+        if(s != "")
+	        lines.add(s);
+        else
+            System.out.println("data was not parsed successfully");
     }
 
     public void createCVS(String name) throws IOException {
         if(lines.size() > 0) {
             String nameR = name + ".csv";
             try {
-                File myfile = new File(name);
+                File myfile = new File(nameR);
                 if(myfile.createNewFile()) {
                     System.out.println("File created: " + myfile.getName());
 
                     //start writing in file here
                     FileWriter writer = new FileWriter(name);
                     for(int i = 0; i < lines.size(); i++) {
-                        writer.write(lines.get(i));
-                        writer.newLine();
+                        writer.write(lines.get(i) + "\n");
                     }
                     writer.close();
                     System.out.println("Wrote to file successfully");
