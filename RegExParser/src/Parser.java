@@ -3,14 +3,39 @@ import java.util.regex.*;
 public class Parser {
 //wietse
 
+    public String getParseType(String line){
+
+        final String getTypeExpression = "^.*(\\d{4}-\\d{4}|\\d{4}-\\?{4})";
+
+        Pattern pattern = Pattern.compile(getTypeExpression);
+        Matcher matcher = pattern.matcher(line);
+        
+        System.out.println(line);
+
+        if(line.contains("{") && line.contains("\"")){
+            return "episode";
+        }
+
+        while(matcher.find()){   
+            if(matcher.group(matcher.groupCount()) != null){
+                return "series";
+            }
+        }
+
+        return "movie";
+    }
+
+
     public void parse(String line, String type){
 
         Pattern pattern;
         type.toLowerCase();
 
+        
+
         final String movieExpression = "(^.*)\\((\\d{4}|\\?{4})(/I|II|III)?\\)([ ]?)()(\\(V\\)|\\(TV\\))?\\t*(\\d{4})$";
         final String episodeExpression = "(^\\\".*\\\") (\\(\\d{4}\\)) (\\{.*\\})\\t*| *(\\d{4})";
-        final String seriesExpression = "(^\\\"\\\".\\\"\\\") ((\\d{4}|?{4})(/I|II|III)?) {(.?)(#(\\d).(\\d))}\\t*(\\d{4}|?{4})$";
+        final String seriesExpression = "^\\\"(.*)\\\" \\((\\d{4})\\)\\s*(\\d{4})-(\\d{4}|\\?{4})";
 
         switch(type){
             case "movie":
@@ -24,17 +49,22 @@ public class Parser {
             default:
                 pattern = Pattern.compile(movieExpression);
         }
+
+        Matcher matcher = pattern.matcher(line);
+        System.out.println();
+        printMatch(matcher);
         
-        //for (String line : lines) {
+    }
 
-            Matcher matcher = pattern.matcher(line);
+    public void printMatch(Matcher matcher){
 
-            while(matcher.find()){
+        while(matcher.find()){
             System.out.println(matcher.group());
                 for(int i = 1; i < matcher.groupCount(); i++){
+                    if(matcher.group(i) != null)
                     System.out.println(matcher.group(i));
                 }
             }
-        //}
     }
+
 }
