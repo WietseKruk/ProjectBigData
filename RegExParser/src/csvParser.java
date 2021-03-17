@@ -9,7 +9,7 @@ public class csvParser {
         String s = Stream.of(data).map(this::escapeSpecialCharacters).
                 collect(Collectors.joining(","));
 
-	lines.add(s);
+	    lines.add(s);
     }
 
     public void createCVS(String name) throws IOException {
