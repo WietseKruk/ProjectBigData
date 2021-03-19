@@ -23,16 +23,14 @@ public class Parser {
         return "movie";
     }
 
+
     //Wietse
-    public void parse(String line, String type){
-
+    public Matcher getMatcher(String line, String type){
         Pattern pattern;
-        type.toLowerCase();
-
         
         //Wietse
         final String movieExpression = "(^.*)\\((\\d{4}|\\?{4})(/I|/II|/III)?\\)([ ]?)()(\\(V\\)|\\(TV\\)|\\(VG\\))?\\t*(\\d{4})$";
-        final String episodeExpression = "(^\\\".*\\\") (\\(\\d{4}\\)) (\\{.*\\})\\t*| *(\\d{4})";
+        final String episodeExpression = "(^\\\".*\\\") (\\(\\d{4}\\)) (\\{.*\\})\\t* *(\\d{4})";
         final String seriesExpression = "^\\\"(.*)\\\" \\((\\d{4})\\)\\s*(\\d{4})-(\\d{4}|\\?{4})";
         final String actorMovieExpression = "[\\t]{3}([\\w\\s!?\\-:&@#]*)\\(?(\\d{4}|\\?{4})/?(II)?\\)?\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\(\\w*\\))?\\s*(\\[[\\w\\s]*\\])?";
         
@@ -70,12 +68,12 @@ public class Parser {
 
         Matcher matcher = pattern.matcher(line);
         
-        printMatch(matcher);
+        return matcher;
         
     }
 
     //Wietse
-    public void printMatch(Matcher matcher){
+    public void parse(Matcher matcher){
 
         while(matcher.find()){
                 for(int i = 0; i < matcher.groupCount(); i++){
