@@ -1,14 +1,10 @@
-## Getting Started
-
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-## Dependency Management
-
-The `JAVA DEPENDENCIES` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-pack/blob/master/release-notes/v0.9.0.md#work-with-jar-files-directly).
+1. Hoeveel acteurs zitten er gemiddeld in een film? (films, acteurs);
+2. Hoe lang duurt een film gemiddeld per genre gesorteerd op jaar (genre, running time);
+3. In hoeveel films heeft Morgan Freeman gespeeld? (acteurs);
+4. In welk jaar zijn de meeste films uitgekomen, per genre (genre);
+5. Welke acteur heeft in de meeste films/series gespeeld (acteurs);
+6. Hoeveel acteurs zijn er met de voornaam Max (acteurs);
+7. Welke acteurs hebben de rol van James Bond gespeeld (acteurs);
+8. Welke films spelen zich (deels) af in New York (locations);
+9. Welke regisseur heeft de meeste films met Jim Carrey geregisseerd (directors, acteurs);
+10. Welk nummer is het vaakst gebruikt in de soundtrack van films (soundtracks);

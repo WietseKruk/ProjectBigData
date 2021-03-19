@@ -6,7 +6,7 @@ import java.io.FileWriter;
 public class csvParser {
     ArrayList<String> lines = new ArrayList<String>();
 
-    public void convertToCVSLine(String[] data){
+    public void convertToCSVLine(String[] data){
         String s = new String();
         for(int i = 0; i < data.length; i++){
             s+=data[i];
@@ -20,7 +20,7 @@ public class csvParser {
             System.out.println("data was not parsed successfully");
     }
 
-    public void createCVS(String name) throws IOException {
+    public void createCSV(String name) throws IOException {
         if(lines.size() > 0) {
             String nameR = name + ".csv";
             try {
