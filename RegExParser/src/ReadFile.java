@@ -31,4 +31,29 @@ public class ReadFile {
             e.printStackTrace();
         }
     } 
+
+    //Max Prakken
+    public void FileReaderParseCSV(String filename, csvParser csvp){
+        BufferedReader reader;
+        try{
+            File thisFile = new File(filename);
+
+            reader = new BufferedReader(new FileReader(thisFile.getAbsolutePath()));
+            
+            String line = reader.readLine();
+            while(line != null){
+                String type = parser.getParseType(line);
+                matcher = parser.getMatcher(line, type);
+                parser.parse(matcher, csvp);
+
+                System.out.println("Type: " + type);
+                System.out.println();
+
+                line = reader.readLine();
+            }
+            reader.close();
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+    } 
 }

@@ -3,15 +3,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.io.FileWriter;
 
+
+//Max Prakken
 public class csvParser {
     ArrayList<String> lines = new ArrayList<String>();
 
-    public void convertToCSVLine(String[] data){
+    public void convertToCSVLine(ArrayList<String> data){
         String s = new String();
-        for(int i = 0; i < data.length; i++){
-            s+=data[i];
-            if(i == data.length - 1) 
-                s+=", ";
+        for(int i = 0; i < data.size(); i++){
+            s+=data.get(i);
+            if(i != data.size() - 1) 
+                s += ", ";
         }
 
         if(s != "")
@@ -29,9 +31,12 @@ public class csvParser {
                     System.out.println("File created: " + myfile.getName());
 
                     //start writing in file here
-                    FileWriter writer = new FileWriter(name);
+                    FileWriter writer = new FileWriter(nameR);
                     for(int i = 0; i < lines.size(); i++) {
-                        writer.write(lines.get(i) + "\n");
+                        String newLine = lines.get(i) + "\n";
+
+                        writer.write(newLine);
+                        System.out.println(lines.get(i));
                     }
                     writer.close();
                     System.out.println("Wrote to file successfully");

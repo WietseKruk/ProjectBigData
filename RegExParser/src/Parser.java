@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.regex.*;
 
 public class Parser {
@@ -86,7 +87,21 @@ public class Parser {
                         System.out.println("Group " + i + ": " + matcher.group(i));
                     }
                     
+
                 }
+            }
+    }
+
+    //Wietse / Max overload
+    public void parse(Matcher matcher, csvParser csvp){
+        ArrayList<String> dataArray = new ArrayList<String>();
+
+        while(matcher.find()){
+                for(int i = 1; i < matcher.groupCount(); i++){
+                    System.out.println("Group " + i + ": " + matcher.group(i));
+                    dataArray.add(matcher.group(i));
+                }
+                csvp.convertToCSVLine(dataArray);
             }
     }
 
