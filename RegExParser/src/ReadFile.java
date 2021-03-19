@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-
+//Miel
 public class ReadFile {
     private Parser parser = new Parser();
 
@@ -17,7 +17,6 @@ public class ReadFile {
             String line = reader.readLine();
             while(line != null){
                 String type = parser.getParseType(line);
-                
                 parser.parse(line, type);
                 System.out.println("Type: " + type);
                 System.out.println();
