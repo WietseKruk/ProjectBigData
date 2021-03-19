@@ -16,10 +16,12 @@ public class ReadFile {
             
             String line = reader.readLine();
             while(line != null){
-                //System.out.println(line);
-                
+                String type = parser.getParseType(line);
 
-                parser.parse(line, "movie");
+                parser.parse(line, type);
+                System.out.println("Type: " + type);
+                System.out.println();
+
                 line = reader.readLine();
             }
             reader.close();
