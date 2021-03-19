@@ -80,11 +80,11 @@ public class Parser {
                 for(int i = 0; i < matcher.groupCount(); i++){
                     if(matcher.group(i) == null){
                         String temp = matcher.group(i);
-                        temp = "_";
-                        System.out.println("Group " + i + ": " + temp);
+                        //temp = "_";
+                        //System.out.println("Group " + i + ": " + temp);
   
                     }else{
-                        System.out.println("Group " + i + ": " + matcher.group(i));
+                        //System.out.println("Group " + i + ": " + matcher.group(i));
                     }
                     
 
@@ -98,9 +98,11 @@ public class Parser {
 
         while(matcher.find()){
                 for(int i = 1; i < matcher.groupCount(); i++){
-                    System.out.println("Group " + i + ": " + matcher.group(i));
+                    //System.out.println("Group " + i + ": " + matcher.group(i));
+                    String matchplustype = matcher.group(i);
                     dataArray.add(matcher.group(i));
                 }
+                dataArray.add(getParseType(matcher.group(0)));
                 csvp.convertToCSVLine(dataArray);
             }
     }

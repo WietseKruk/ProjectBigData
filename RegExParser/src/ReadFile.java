@@ -8,6 +8,8 @@ import java.util.regex.Matcher;
 public class ReadFile {
     private Parser parser = new Parser();
     private Matcher matcher;
+    
+    public String type;
 
     public void FileReader(String filename){
         BufferedReader reader;
@@ -18,11 +20,10 @@ public class ReadFile {
             
             String line = reader.readLine();
             while(line != null){
-                String type = parser.getParseType(line);
+                type = parser.getParseType(line);
                 matcher = parser.getMatcher(line, type);
                 parser.parse(matcher);
-                System.out.println("Type: " + type);
-                System.out.println();
+               // System.out.println("Type: " + type + "\n");
 
                 line = reader.readLine();
             }
@@ -42,12 +43,11 @@ public class ReadFile {
             
             String line = reader.readLine();
             while(line != null){
-                String type = parser.getParseType(line);
+                type = parser.getParseType(line);
                 matcher = parser.getMatcher(line, type);
                 parser.parse(matcher, csvp);
 
-                System.out.println("Type: " + type);
-                System.out.println();
+                //System.out.println("Type: " + type);
 
                 line = reader.readLine();
             }
