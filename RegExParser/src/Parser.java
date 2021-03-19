@@ -23,12 +23,10 @@ public class Parser {
         return "movie";
     }
 
+
     //Wietse
-    public void parse(String line, String type){
-
+    public Matcher getMatcher(String line, String type){
         Pattern pattern;
-        type.toLowerCase();
-
         
         //Wietse
         final String movieExpression = "(^.*)\\((\\d{4}|\\?{4})(/I|/II|/III)?\\)([ ]?)()(\\(V\\)|\\(TV\\)|\\(VG\\))?\\t*(\\d{4})$";
@@ -70,12 +68,12 @@ public class Parser {
 
         Matcher matcher = pattern.matcher(line);
         
-        printMatch(matcher);
+        return matcher;
         
     }
 
     //Wietse
-    public void printMatch(Matcher matcher){
+    public void parse(Matcher matcher){
 
         while(matcher.find()){
                 for(int i = 0; i < matcher.groupCount(); i++){

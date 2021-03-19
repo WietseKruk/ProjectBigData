@@ -4,7 +4,7 @@ public class App {
 
         ReadFile readFile = new ReadFile();
 
-        readFile.FileReader("RegExParser/src/testMovies.list");
+        readFile.FileReader("src/testMovies.list");
     }
 
     
