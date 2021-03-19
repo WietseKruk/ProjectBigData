@@ -32,10 +32,22 @@ public class Parser {
         type.toLowerCase();
 
         
-
-        final String movieExpression = "(^.*)\\((\\d{4}|\\?{4})(/I|II|III)?\\)([ ]?)()(\\(V\\)|\\(TV\\))?\\t*(\\d{4})$";
+        //Wietse
+        final String movieExpression = "(^.*)\\((\\d{4}|\\?{4})(/I|/II|/III)?\\)([ ]?)()(\\(V\\)|\\(TV\\)|\\(VG\\))?\\t*(\\d{4})$";
         final String episodeExpression = "(^\\\".*\\\") (\\(\\d{4}\\)) (\\{.*\\})\\t*| *(\\d{4})";
         final String seriesExpression = "^\\\"(.*)\\\" \\((\\d{4})\\)\\s*(\\d{4})-(\\d{4}|\\?{4})";
+
+        //Miel - genre
+        final String genreExpression = "^(.*)\\s\\((\\d{4}|\\?{4})(/I|/II|/III)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{.*\\})?\\s*(.*)";
+        //Miel - runtime
+        final String movieRunningTimesExpression = "^(.*)\\s\\((\\d{4}|\\?{4})(/I|/II|/III)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\{.*\\})?\\s*(.*\\:)?(\\d*)\\s*(\\((.*)\\))?";
+        final String seriesRunningTimesExpression = "^\\\"(.*)\\\"\\s\\((\\d{4}|\\?{4})(/I|/II|/III)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\{.*\\})?\\s*(.*\\:)?(\\d*)\\s*(\\((.*)\\))?";
+        //Miel - soundstracks
+        final String soundTrackTimesExpression = "^((\\#.*)\\((\\d{4}|\\?{4})(/I|/II|/III)?\\))?(\\-.*)?"; //(Misschien nog niet helemaal af)
+        //Miel - actors/actresses + directors
+        final String actorWithMovieTitleExpression = "^(.*)(\\t)(.*)\\s\\((\\d{4}|\\?{4})(/I|/II|/III|/IV)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\(voice\\))?\\s*(\\(.*\\))?\\s*(\\[.*\\])?\\s*(\\<\\d*\\>)?";
+        final String actorWithEpisodeTitleExpression = "^(.*)(\\t)(.*)\\s\\((\\d{4}|\\?{4})(/I|/II|/III|/IV)?\\)\\s* (\\{.*\\})\\s*(\\[.*\\])?\\s*(\\<\\d*\\>)?";
+
 
         switch(type){
             case "movie":
