@@ -62,6 +62,7 @@ public class csvParser {
         }
     }
 
+    // Max Prakken
     private void writeToFile(String nameR) throws IOException{
         FileWriter writer = new FileWriter(nameR);
         for(int i = 0; i < lines.size(); i++) {
