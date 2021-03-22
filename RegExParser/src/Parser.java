@@ -32,7 +32,7 @@ public class Parser {
         //Wietse
         final String movieExpression = "(^.*)\\((\\d{4}|\\?{4})\\/?(I|II|III)?\\)?\\s*(\\{.*\\})?\\(?(V|TV|VG)?\\)?\\s*(\\d{4}|\\?{4})$";
         final String episodeExpression = "(^\\\".*\\\") (\\(\\d{4}\\)) (\\{.*\\})\\t* *(\\d{4})";
-        final String seriesExpression = "^\\\"(.*)\\\" \\((\\d{4})\\)\\s*(\\d{4})-(\\d{4}|\\?{4})";
+        final String seriesExpression =  "^\\\"(.*)\\\" \\((\\d{4})\\)\\s*\\d{4}-(\\d{4}|\\?{4})";
         final String actorMovieExpression = "[\\t]{3}([\\w\\s!?\\-:&@#]*)\\(?(\\d{4}|\\?{4})/?(II)?\\)?\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\(\\w*\\))?\\s*(\\[[\\w\\s]*\\])?";
         
         final String locationExpression = "^(.*)\\((\\d{4}|\\?{4}|\\d{4}/I{1,3}|d{4}/IV|d{4}/V|\\?{4}/I{1,3}|\\?{4}/IV|\\?{4}/V|\\?{4}/VI{1,3}|\\?{4}/IX|\\?{4}/X)\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(.*)"; //Patrick

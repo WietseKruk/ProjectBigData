@@ -75,7 +75,7 @@ public class csvParser {
                         headerline = "SERIE, JAAR, EPISODE";
                     break;
                     case "series" : 
-                        headerline = "SERIE, JAAR_START, JAAR_START, JAAR_EINDIG";
+                        headerline = "SERIE, JAAR_START, JAAR_EINDIG";
                     break;
                 }
                 writer.write(headerline + "\n");
