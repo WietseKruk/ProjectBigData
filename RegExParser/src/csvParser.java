@@ -39,7 +39,7 @@ public class csvParser {
 
     // Max Prakken
     private void writeToFile() throws IOException{
-        
+
         String nameFile = "";
         FileWriter writer = null;
         File myfile = null;
@@ -48,6 +48,9 @@ public class csvParser {
             String type = lines.get(i).substring(lines.get(i).lastIndexOf(";") + 1);
 
             if(!type.equals(this.type)) {
+                if(writer != null)
+                    writer.close();
+
                 nameFile = type + ".csv";
                 myfile = new File(nameFile);
                 writer = new FileWriter(myfile);
@@ -55,7 +58,7 @@ public class csvParser {
                 if(myfile.createNewFile()) {
                     System.out.println("File created: " + myfile.getName());
                 }else {
-                    System.out.println("File " + nameFile + " was NOT created");
+                    System.out.println("File " + nameFile + " does already exist");
                 }
                 
                 this.type = type; // set type
