@@ -53,29 +53,32 @@ public class csvParser {
 
                 nameFile = type + ".csv";
                 myfile = new File(nameFile);
-                writer = new FileWriter(myfile);
+                writer = new FileWriter(myfile, true);
 
                 if(myfile.createNewFile()) {
                     System.out.println("File created: " + myfile.getName());
                 }else {
-                    System.out.println("File " + nameFile + " does already exist");
+                    //System.out.println("File " + nameFile + " does already exist");
                 }
 
                 this.type = type; // set type
 
                 String headerline = "";
-                switch(this.type) {
-                    case "movie" :
-                        headerline = "TITEL, JAAR, DEEL, SUSPENDED, PLATFORM";
-                    break;
-                    case "episode" :
-                        headerline = "SERIE, JAAR, EPISODE";
-                    break;
-                    case "series" : 
-                        headerline = "SERIE, JAAR_START, JAAR_EIND";
-                    break;
-                }
+                if(myfile.length() < 1){
+                    switch(this.type) {
+                        case "movie" :
+                            headerline = "TITEL, JAAR, DEEL, SUSPENDED, PLATFORM";
+                        break;
+                        case "episode" :
+                            headerline = "SERIE, JAAR_SERIE, EPISODE, JAAR_UITGEZONDEN";
+                        break;
+                        case "series" : 
+                            headerline = "SERIE, JAAR_START, JAAR_EIND";
+                        break;
+                    }
+                
                 writer.write(headerline + "\n");
+                }
                 //System.out.println("HEADER PRINTED SUCCESSFULLY");
             }
 
