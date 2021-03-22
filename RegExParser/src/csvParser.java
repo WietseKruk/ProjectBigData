@@ -16,10 +16,7 @@ public class csvParser {
             
             if(i < data.size() - 2) {
                 s+=data.get(i) + ",";
-            }else if (i < data.size() - 1){
-                s+=data.get(i);
-            }
-            else if(i < data.size() - 1) { 
+            }else if(i < data.size() - 1) { 
                 s+=data.get(i);
             }else {
                 s+= ";" + data.get(i);
@@ -75,11 +72,11 @@ public class csvParser {
                         headerline = "SERIE, JAAR, EPISODE";
                     break;
                     case "series" : 
-                        headerline = "SERIE, JAAR_START, JAAR_EINDIG";
+                        headerline = "SERIE, JAAR_START, JAAR_EIND";
                     break;
                 }
                 writer.write(headerline + "\n");
-                System.out.println("HEADER PRINTED SUCCESSFULLY");
+                //System.out.println("HEADER PRINTED SUCCESSFULLY");
             }
 
             if(type.length() > 0 && writer != null) {
@@ -88,7 +85,7 @@ public class csvParser {
                     String newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "\n";
                     writer.write(newLine);
                     
-                    System.out.println("Wrote to file successfully");
+                    //System.out.println("Wrote to file successfully");
 
                 }catch(IOException e) {
                     System.out.println("error took place: ");
@@ -96,7 +93,7 @@ public class csvParser {
                 }
             }
             
-            System.out.println(lines.get(i));
+            //System.out.println(lines.get(i));
         }
         if(writer != null)
         writer.close();
