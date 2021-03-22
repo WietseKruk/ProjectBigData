@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.io.FileWriter;
 
@@ -15,10 +14,12 @@ public class csvParser {
         String s = new String();
         for(int i = 0; i < data.size(); i++){
             
-            if(i < data.size() - 1) {
+            if(i < data.size() - 2) {
                 s+=data.get(i) + ",";
             }
-            else { 
+            else if(i < data.size() - 1) { 
+                s+=data.get(i);
+            }else {
                 s+= ";" + data.get(i);
             }
         }
@@ -60,8 +61,23 @@ public class csvParser {
                 }else {
                     System.out.println("File " + nameFile + " does already exist");
                 }
-                
+
                 this.type = type; // set type
+
+                String headerline = "";
+                switch(this.type) {
+                    case "movie" :
+                        headerline = "TITEL, JAAR, DEEL, SUSPENDED, PLATFORM";
+                    break;
+                    case "episode" :
+                        headerline = "SERIE, JAAR, EPISODE";
+                    break;
+                    case "series" : 
+                        headerline = "SERIE, JAAR_START, JAAR_EINDIG";
+                    break;
+                }
+                writer.write(headerline + "\n");
+                System.out.println("HEADER PRINTED SUCCESSFULLY");
             }
 
             if(type.length() > 0 && writer != null) {
