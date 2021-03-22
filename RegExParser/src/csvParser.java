@@ -16,6 +16,8 @@ public class csvParser {
             
             if(i < data.size() - 2) {
                 s+=data.get(i) + ",";
+            }else if (i < data.size() - 1){
+                s+=data.get(i);
             }
             else if(i < data.size() - 1) { 
                 s+=data.get(i);
