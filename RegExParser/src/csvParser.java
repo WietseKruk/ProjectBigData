@@ -15,8 +15,10 @@ public class csvParser {
         String s = new String();
         for(int i = 0; i < data.size(); i++){
             
-            if(i < data.size() - 1) {
+            if(i < data.size() - 2) {
                 s+=data.get(i) + ",";
+            }else if (i < data.size() - 1){
+                s+=data.get(i);
             }
             else { 
                 s+= ";" + data.get(i);
