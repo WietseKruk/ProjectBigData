@@ -97,7 +97,7 @@ public class Parser {
         ArrayList<String> dataArray = new ArrayList<String>();
 
         while(matcher.find()){
-                for(int i = 1; i < matcher.groupCount(); i++){
+                for(int i = 1; i <= matcher.groupCount(); i++){
                     //System.out.println("Group " + i + ": " + matcher.group(i));
                     String matchplustype = matcher.group(i);
                     dataArray.add(matcher.group(i));
