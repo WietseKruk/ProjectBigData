@@ -29,55 +29,55 @@ public class csvParser {
             System.out.println("data was not parsed successfully");
     }
 
-    public void createCSV(String name, String type) throws IOException {
+    public void createCSV(String type) throws IOException {
         if(lines.size() > 0) {
-            String nameR = name + ".csv";
-            try {
-                File myfile = new File(nameR);
-                if(myfile.createNewFile()) {
-                    System.out.println("File created: " + myfile.getName());
-
-                    //start writing in file here
-                    writeToFile(nameR);
-                    System.out.println("Wrote to file successfully");
-
-                }
-                else { //write to existing file. clearing it first
-                    System.out.println("Written to existing file");
-                    PrintWriter pWriter = new PrintWriter(nameR);
-                    pWriter.print("");
-                    pWriter.close();
-
-                    writeToFile(nameR);
-                    System.out.println("Wrote to existing file successfully");
-
-                }
-
-            }catch(IOException e) {
-                System.out.println("a error took place");
-                e.printStackTrace();
-            }
+            writeToFile();
         }else {
             System.out.println("no lines are set up for parsing. Call convertToCVSLine(String s) first");
         }
     }
 
     // Max Prakken
-    private void writeToFile(String nameR) throws IOException{
-        FileWriter writer = new FileWriter(nameR);
+    private void writeToFile() throws IOException{
+        
+        String nameFile = "";
+        FileWriter writer = null;
+        File myfile = null;
+
         for(int i = 0; i < lines.size(); i++) {
             String type = lines.get(i).substring(lines.get(i).lastIndexOf(";") + 1);
+
             if(!type.equals(this.type)) {
+                nameFile = type + ".csv";
+                myfile = new File(nameFile);
+                writer = new FileWriter(myfile);
+
+                if(myfile.createNewFile()) {
+                    System.out.println("File created: " + myfile.getName());
+                }else {
+                    System.out.println("File " + nameFile + " was NOT created");
+                }
                 
-                writer.write("=========== NEW TYPE GIVE NEW TEMPLATE HERE =========== \n");
-                this.type = type; 
+                this.type = type; // set type
+            }
+
+            if(type.length() > 0 && writer != null) {
+                try {
+                    //start writing in file here
+                    String newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "\n";
+                    writer.write(newLine);
+                    
+                    System.out.println("Wrote to file successfully");
+
+                }catch(IOException e) {
+                    System.out.println("error took place: ");
+                    e.printStackTrace();
+                }
             }
             
-            String newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "\n";
-
-            writer.write(newLine);
             System.out.println(lines.get(i));
         }
+        if(writer != null)
         writer.close();
     }
 }
