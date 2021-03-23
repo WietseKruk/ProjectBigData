@@ -25,7 +25,7 @@ public class Database {
                              "year_start INTEGER(4) not NULL," +
                              "year_end VARCHAR(4) not NULL," +
                              "director VARCHAR(255) not NULL," +
-                             "PRIMARY KEY (title + year_start))";
+                             "PRIMARY KEY (title, year_start))";
                              
     String table_actors = "CREATE TABLE ACTOR" +
                             " (name VARCHAR(255) not NULL," +
@@ -38,7 +38,7 @@ public class Database {
     String table_cast = "CREATE TABLE CAST" +
                             " (movie_title VARCHAR(255) not NULL," +
                             " castmember VARCHAR(255) not NULL," +
-                            " PRIMARY KEY (movie_title + castmember))";  
+                            " PRIMARY KEY (movie_title, castmember))";  
 
     String table_episodes = "CREATE TABLE EPISODE" +
                                 " (title VARCHAR(255) not NULL," +
