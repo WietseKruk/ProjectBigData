@@ -67,14 +67,41 @@ public class csvParser {
                 if(myfile.length() < 1){
                     switch(this.type) {
                         case "movie" :
-                            headerline = "TITEL|JAAR|DEEL|SUSPENDED|PLATFORM";
-                        break;
+                                headerline = "TITEL|JAAR|DEEL|SUSPENDED|PLATFORM";
+                            break;
                         case "episode" :
-                            headerline = "SERIE|JAAR_SERIE|EPISODE|JAAR_UITGEZONDEN";
-                        break;
+                                headerline = "SERIE|JAAR_SERIE|EPISODE|JAAR_UITGEZONDEN";
+                            break;
                         case "series" : 
-                            headerline = "SERIE|JAAR_START|JAAR_EIND";
-                        break;
+                                headerline = "SERIE|JAAR_START|JAAR_EIND";
+                            break;
+                        case "actormovie":
+                                headerline = "";
+                            break;
+                        case "location":
+                                headerline = "TITEL|JAAR|DEEL|PLATFORM|LOCATIE";
+                            break;
+                        case "genre":
+                                headerline = "TITEL|JAAR|DEEL|PLATFORM|AFLEVERING_TITEL|SUSPENDED|GENRE";
+                            break;
+                        case "movieruntime":
+                                headerline = "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|LOCATIE|TIJD|NOTITIES";
+                            break;
+                        case "episoderuntime":
+                                headerline = "TITEL|JAAR|DEEL|PLATFORM|AFLEVERING_TITEL|SUSPENDED|LOCATIE|TIJD|NOTITIES";
+                            break;
+                        case "seriesruntime":
+                                headerline = "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|LOCATIE|TIJD|NOTITIES";
+                            break;
+                        case "soundtrack":
+                                headerline = "";
+                            break;
+                        case "actorwithmovietitle":
+                                headerline = "";
+                            break;
+                        case "actorwitseriestitle":
+                                headerline = "";
+                            break;
                     }
                 
                 writer.write(headerline + "\n");

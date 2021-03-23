@@ -20,7 +20,7 @@ public class ReadFile {
             
             String line = reader.readLine();
             while(line != null){
-                type = parser.getParseType(line);
+                type = parser.getParseType(line, filename);
                 matcher = parser.getMatcher(line, type);
                 parser.parse(matcher);
                // System.out.println("Type: " + type + "\n");
@@ -43,9 +43,9 @@ public class ReadFile {
             
             String line = reader.readLine();
             while(line != null){
-                type = parser.getParseType(line);
+                type = parser.getParseType(line, filename);
                 matcher = parser.getMatcher(line, type);
-                parser.parse(matcher, csvp);
+                parser.parse(matcher, csvp, filename);
 
                 //System.out.println("Type: " + type);
 

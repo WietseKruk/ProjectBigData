@@ -7,16 +7,5 @@ public class App {
 
         readFile.FileReaderParseCSV("RegExParser/src/testMovies.list", csvparser);
         csvparser.createCSV(readFile.type);
-        
     }
-
-    
-
-
-    
-    
-    
-
-
-
 }
