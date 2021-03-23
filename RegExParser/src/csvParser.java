@@ -15,7 +15,7 @@ public class csvParser {
         for(int i = 0; i < data.size(); i++){
             
             if(i < data.size() - 2) {
-                s+=data.get(i) + ",";
+                s+=data.get(i) + "|"; 
             }else if(i < data.size() - 1) { 
                 s+=data.get(i);
             }else {
@@ -67,13 +67,13 @@ public class csvParser {
                 if(myfile.length() < 1){
                     switch(this.type) {
                         case "movie" :
-                            headerline = "TITEL, JAAR, DEEL, SUSPENDED, PLATFORM";
+                            headerline = "TITEL|JAAR|DEEL|SUSPENDED|PLATFORM";
                         break;
                         case "episode" :
-                            headerline = "SERIE, JAAR_SERIE, EPISODE, JAAR_UITGEZONDEN";
+                            headerline = "SERIE|JAAR_SERIE|EPISODE|JAAR_UITGEZONDEN";
                         break;
                         case "series" : 
-                            headerline = "SERIE, JAAR_START, JAAR_EIND";
+                            headerline = "SERIE|JAAR_START|JAAR_EIND";
                         break;
                     }
                 
