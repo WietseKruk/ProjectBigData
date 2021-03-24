@@ -5,8 +5,8 @@ public class Parser {
     
     //Wietse
     final String movieExpression = "(^.*)\\((\\d{4}|\\?{4})\\/?(I|II|III)?\\)?\\s*(\\{.*\\})?\\(?(V|TV|VG)?\\)?";
-    final String episodeExpression = "(^\\\".*\\\") (\\(\\d{4}\\)) (\\{[^\\{].*?\\})?\\s(\\{.*\\})\\s(\\d{4}|\\?{4})";
-    final String seriesExpression =  "^\\\"(.*)\\\" \\((\\d{4})\\)\\s*(\\{.*\\})?\\s*\\d{4}-(\\d{4}|\\?{4})";
+    final String episodeExpression = "(^\\\".*\\\") (\\(\\d{4}\\)) (\\{[^\\{].*?\\})?\\s(\\{.*\\})?\\s*(\\d{4}|\\?{4})";
+    final String seriesExpression =  "^\\\"(.*)\\\" \\(\\d{4}\\)\\s*(\\{.*\\})?\\s*(\\d{4})-(\\d{4}|\\?{4})";
     final String actorMovieExpression = "[\\t]{3}([\\w\\s!?\\-:&@#]*)\\(?(\\d{4}|\\?{4})/?(II)?\\)?\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\(\\w*\\))?\\s*(\\[[\\w\\s]*\\])?";
     final String actorSeriesExpression = "[\\t]{3}\\\"([\\w\\s!?\\-:&@#]*)\\\"\\s\\((\\d{4}|\\?{4})\\)\\s*\\{(.*)\\}\\s*(\\(.*\\))?\\s*\\[(\\w*)\\]";
     
