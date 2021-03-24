@@ -1,3 +1,4 @@
+use imdbdb;
 CREATE TABLE MOVIE (
     movie_title VARCHAR(255) NOT NULL,
     director VARCHAR(255) NOT NULL,
@@ -9,35 +10,35 @@ CREATE TABLE MOVIE (
 
 CREATE TABLE SERIES
     (title VARCHAR(255) not NULL,
-    series INTEGER(10) not NULL,
     year_start INTEGER(4) not NULL,
     year_end VARCHAR(4) not NULL,
     director VARCHAR(255),
+    id INTEGER(10) auto_increment not NULL,
     PRIMARY KEY (id));
     
 CREATE TABLE ACTOR
     (actorName VARCHAR(255) not NULL,
-    PRIMARY KEY(name));
+    PRIMARY KEY(actorName));
 
  CREATE TABLE ACTRESS
     (actressName VARCHAR(255) not NULL,
-    PRIMARY KEY(name));
+    PRIMARY KEY(actressName));
   
 CREATE TABLE CASTING
     (movie_title VARCHAR(255) not NULL,
-    castID INTEGER(10) not NULL,
+    castID INTEGER(10) auto_increment not NULL,
     castmember VARCHAR(255) not NULL,
-    PRIMARY KEY (id));  
+    PRIMARY KEY (castID));  
 
 CREATE TABLE EPISODE (
     title VARCHAR(255) NOT NULL,
     running_time VARCHAR(255),
     location VARCHAR(255),
     castID INTEGER(10),
-    series VARCHAR(255) NOT NULL,
+    seriesID INTEGER(10) NOT NULL,
     PRIMARY KEY (TITLE),
     FOREIGN KEY (castID)
         REFERENCES CASTING (castID),
-    FOREIGN KEY (series)
-        REFERENCES SERIES (series)
+    FOREIGN KEY (seriesID)
+        REFERENCES SERIES (id)
 );
