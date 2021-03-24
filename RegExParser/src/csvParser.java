@@ -29,6 +29,10 @@ public class csvParser {
             System.out.println("data was not parsed successfully");
     }
 
+    public void setLines(ArrayList<String> data){
+        lines = data;
+    }
+
     public void createCSV(String type) throws IOException {
         if(lines.size() > 0) {
             writeToFile();
@@ -73,7 +77,7 @@ public class csvParser {
                                 headerline = "SERIE|JAAR_SERIE|EPISODE|JAAR_UITGEZONDEN";
                             break;
                         case "series" : 
-                                headerline = "SERIE|JAAR_START|JAAR_EIND";
+                                headerline = "SERIE|SUSPENDED|JAAR_START|JAAR_EIND";
                             break;
                         case "actormovie":
                                 headerline = "";
@@ -93,8 +97,11 @@ public class csvParser {
                         case "seriesruntime":
                                 headerline = "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|LOCATIE|TIJD|NOTITIES";
                             break;
-                        case "soundtrack":
-                                headerline = "";
+                        case "soundtrackmovies":
+                                headerline = "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|NUMMER_TITEL";
+                            break;
+                        case "soundtrackseries":
+                                headerline = "TITEL|JAAR|EPISODE|SUSPENDED|NUMMER_TITEL";
                             break;
                         case "actorwithmovietitle":
                                 headerline = "";

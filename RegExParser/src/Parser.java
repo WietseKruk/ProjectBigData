@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.*;
 
 public class Parser {
@@ -19,13 +20,16 @@ public class Parser {
     final String movieRunTimesExpression =  "^([^\\\"].*[^\\\"])\\s\\((\\d{4}|\\?{4})(/I|/II|/III)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\{.*\\})?\\s*(.*\\:)?(\\d*)\\s*(\\(.*\\))?";
     final String episodesRunTimesExpression = "^\\\"(.*)\\\"\\s\\((\\d{4}|\\?{4})(/I|/II|/III)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\{.*\\})\\s*(.*\\:)?(\\d*)\\s*(\\(.*\\))?";
     final String seriesRunTimesExpression = "^\\\"(.*)\\\"\\s\\((\\d{4}|\\?{4})(/I|/II|/III)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(.*\\:)?(\\d*)\\s*(\\(.*\\))?";
-    
     //Miel - soundstracks
-    final String soundTrackTimesExpression = "^((\\#.*)\\((\\d{4}|\\?{4})(/I|/II|/III)?\\))?(\\-.*)?"; //(Misschien nog niet helemaal af)
+    final String soundTrackMovieExpression = "^\\#\\s([^\\\"].*)\\((\\d{4}|\\?{4})(\\/I|\\/II|\\/III)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{\\{.*\\}\\})?";
+    final String soundTrackSeriesExpression = "^\\#\\s*\\\"(.*)\\\" (\\(\\d{4}\\))\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?";
+    final String soundTrackSongExpression = "^\\-\\s(.*)\\s*?(\\(.*\\))?";
+    final String soundTrackInfoExpression = "^[^#^-]\\s(.*)";
     //Miel - actors/actresses + directors
     final String withMovieTitleExpression = "^(.*)(\\t)(.*)\\s\\((\\d{4}|\\?{4})(/I|/II|/III|/IV)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\(voice\\))?\\s*(\\(.*\\))?\\s*(\\[.*\\])?\\s*(\\<\\d*\\>)?";
     final String withEpisodeTitleExpression = "^(.*)(\\t)(.*)\\s\\((\\d{4}|\\?{4})(/I|/II|/III|/IV)?\\)\\s* (\\{.*\\})\\s*(\\[.*\\])?\\s*(\\<\\d*\\>)?";
     
+    private SoundtrackParser soundtrackParser = new SoundtrackParser();
 
     //Wietse / Miel aangevuld
     public String getParseType(String line, String filename){
@@ -48,12 +52,31 @@ public class Parser {
                 return "episoderuntime";
             else if(line.matches(seriesRunTimesExpression))
                 return "seriesruntime";
+        }else if(filename.contains("soundtracks")){
+            if(line.matches(soundTrackMovieExpression))
+                return "soundtrackmovie";
+            else if(line.matches(soundTrackSeriesExpression))
+                return "soundtrackseries";
+            else if(line.matches(soundTrackSongExpression))
+                return "soundtracksong";
+            else if(line.matches(soundTrackInfoExpression))
+                return "songinfo";
         }
 
         //Voor soundtracks: Maak een functie die de titel, jaartal (en episode) opslaat en die telkens voor de song zet. Als er een nieuwe song komt weer nieuwe info opslaan.
         // Uiteindelijk wil ik een lijst voor de songs en niet de episodes er los in.
 
         return "movie"; //Default als niets goed is
+    }
+
+    public void soundtrackAssenbler(String[] lines){
+        //if line starts met #
+        //sla info op
+
+        //if line start with - 
+        // voeg opgeslagen info ervoor
+
+
     }
 
 
@@ -89,9 +112,6 @@ public class Parser {
             case "seriesruntime":
                 pattern = Pattern.compile(seriesRunTimesExpression);
                 break;
-            case "soundtrack":
-                pattern = Pattern.compile(soundTrackTimesExpression);
-                break;
             case "actorwithmovietitle":
                 pattern = Pattern.compile(withMovieTitleExpression);
                 break;
@@ -106,7 +126,29 @@ public class Parser {
         Matcher matcher = pattern.matcher(line);
         
         return matcher;
-        
+    }
+
+    public Matcher getMatcherSoundtrack(String line, String type){
+        Pattern pattern;
+        switch(type){
+            case "soundtrackmovie":
+                pattern = Pattern.compile(soundTrackMovieExpression);
+                break;
+            case "soundtrackseries":
+                pattern = Pattern.compile(soundTrackSeriesExpression);
+                break;
+            case "soundtracksong":
+                pattern = Pattern.compile(soundTrackSongExpression);
+                break;
+            case "songinfo":
+                pattern = Pattern.compile(soundTrackInfoExpression);
+                break;
+            default:
+                pattern = Pattern.compile(movieExpression);
+                System.out.println("Couldn't find expression, defaulting to movie");
+        }
+        Matcher matcher = pattern.matcher(line);
+        return matcher;
     }
 
     //Wietse

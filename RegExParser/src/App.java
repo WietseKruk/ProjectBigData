@@ -5,7 +5,7 @@ public class App {
         ReadFile readFile = new ReadFile();
         csvParser csvparser = new csvParser();
 
-        readFile.FileReaderParseCSV("RegExParser/src/testMovies.list", csvparser);
+        readFile.FileReaderParseCSV("RegExParser/src/testsoundtracks.list", csvparser);
         csvparser.createCSV(readFile.type);
     }
 }
