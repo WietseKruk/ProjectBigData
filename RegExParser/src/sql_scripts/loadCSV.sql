@@ -1,0 +1,36 @@
+use imdbdb;
+LOAD DATA INFILE'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/actor.csv'
+INTO TABLE series
+FIELDS TERMINATED BY '|'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/actress.csv'
+INTO TABLE series
+FIELDS TERMINATED BY '|'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/casting.csv'
+INTO TABLE series
+FIELDS TERMINATED BY '|'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/episode.csv'
+INTO TABLE series
+FIELDS TERMINATED BY '|'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/movie.csv'
+INTO TABLE series
+FIELDS TERMINATED BY '|'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
+
+LOAD DATA INFILE'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/series.csv'
+INTO TABLE series
+FIELDS TERMINATED BY '|'
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;

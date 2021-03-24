@@ -55,7 +55,8 @@ public class csvParser {
                 if(writer != null)
                     writer.close();
 
-                nameFile = type + ".csv";
+                String url = "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/";
+                nameFile = url + type + ".csv";
                 myfile = new File(nameFile);
                 writer = new FileWriter(myfile, true);
 
@@ -118,8 +119,16 @@ public class csvParser {
 
             if(type.length() > 0 && writer != null) {
                 try {
+                    String newLine = "";
+
+                    if(this.type.equals("series")) {
+                        newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "| |0\n";
+                    }
+                    else {
+                        newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "\n";
+                    }
+
                     //start writing in file here
-                    String newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "\n";
                     writer.write(newLine);
                     
                     //System.out.println("Wrote to file successfully");

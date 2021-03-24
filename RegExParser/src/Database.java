@@ -24,7 +24,7 @@ public class Database {
                             " (title VARCHAR(255) not NULL," +
                              "year_start INTEGER(4) not NULL," +
                              "year_end VARCHAR(4) not NULL," +
-                             "director VARCHAR(255) not NULL," +
+                             "director VARCHAR(255)," +
                              "PRIMARY KEY (title, year_start))";
                              
     String table_actors = "CREATE TABLE ACTOR" +
@@ -50,7 +50,7 @@ public class Database {
                                 " FOREIGN KEY(CAST)" + 
                                 " FOREIGN KEY(SERIES_NAME))";
 
-    public static void main(String[] args){
+    public static void Database(){
         Connection conn = null;
         Statement stmt = null;
 
