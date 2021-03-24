@@ -111,8 +111,16 @@ public class csvParser {
 
             if(type.length() > 0 && writer != null) {
                 try {
+                    String newLine = "";
+
+                    if(this.type == "series") {
+                        newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "| |0" + "\n";
+                    }
+                    else {
+                        newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "\n";
+                    }
+
                     //start writing in file here
-                    String newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "\n";
                     writer.write(newLine);
                     
                     //System.out.println("Wrote to file successfully");
