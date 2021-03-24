@@ -51,7 +51,8 @@ public class csvParser {
                 if(writer != null)
                     writer.close();
 
-                nameFile = type + ".csv";
+                String url = "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/";
+                nameFile = url + type + ".csv";
                 myfile = new File(nameFile);
                 writer = new FileWriter(myfile, true);
 
