@@ -36,24 +36,24 @@ public class csvParser {
     // Max Prakken
     public void createCSV() throws IOException{
 
-        if(lines.size() > 0) {
+        if(lines.size() > 0) { // if lines are not empty
             String nameFile = "";
             FileWriter writer = null;
             File myfile = null;
 
-            for(int i = 0; i < lines.size(); i++) {
-                String type = lines.get(i).substring(lines.get(i).lastIndexOf(";") + 1);
+            for(int i = 0; i < lines.size(); i++) { // loop through lines
+                String type = lines.get(i).substring(lines.get(i).lastIndexOf(";") + 1); // get type from line
 
-                if(!type.equals(this.type)) {
-                    if(writer != null)
+                if(!type.equals(this.type)) { // if current type equals type
+                    if(writer != null) // close writer if not null
                         writer.close();
 
-                    String url = "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/";
-                    nameFile = url + type + ".csv";
+                    String url = "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/"; // set url to mysql workbench default folder
+                    nameFile = url + type + ".csv"; // make complete file name plus url
                     myfile = new File(nameFile);
                     writer = new FileWriter(myfile, true);
 
-                    if(myfile.createNewFile()) {
+                    if(myfile.createNewFile()) { // create new file on location
                         System.out.println("File created: " + myfile.getName());
                     }else {
                         //System.out.println("File " + nameFile + " does already exist");
@@ -61,11 +61,9 @@ public class csvParser {
 
                     this.type = type; // set type
 
-                    String headerline = "";
-                    if(myfile.length() < 1){
-                        selectHeader(this.type);
-                    
-                    writer.write(headerline + "\n");
+                    if(myfile.length() < 1){ // if file is empty
+                        String headerline = selectHeader(this.type); // select header
+                        writer.write(headerline + "\n");
                     }
                     //System.out.println("HEADER PRINTED SUCCESSFULLY");
                 }
