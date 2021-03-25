@@ -11,7 +11,7 @@ public class App {
         csvParser csvparser = new csvParser();
 
         readFile.FileReaderParseCSV("RegExParser/src/testMovies.list", csvparser);
-        csvparser.createCSV(readFile.type);
+        csvparser.createCSV();
 
 
         Connection dbConnection = null;
