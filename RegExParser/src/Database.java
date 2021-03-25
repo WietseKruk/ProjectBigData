@@ -3,7 +3,7 @@ import java.sql.*;
 public class Database {
     // JBDC driver name and DB url
     static final String JDBC_DRIVER = "com.mysql.jbdc.Driver";
-    static final String DB_URL = ""; // db url
+    static final String DB_URL = "root@localhost"; // db url
 
     // DB credentials
     static final String DB_USER = "root";
