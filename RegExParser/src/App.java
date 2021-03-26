@@ -9,40 +9,14 @@ public class App {
 
         ReadFile readFile = new ReadFile();
         csvParser csvparser = new csvParser();
+        DBmanager dbm = new DBmanager();
 
         readFile.FileReaderParseCSV("RegExParser/src/testMovies.list", csvparser);
         csvparser.createCSV();
 
+        dbm.executeScript("RegExParser/src/sql_scripts/loadCSV.sql");
 
-        Connection dbConnection = null;
 
-        try {
-            String url = "jdbc:mysql://localhost:3306/imdbdb";
-            Properties info = new Properties();
-            info.put("user", "root");
-            info.put("password", "password");
-            
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            dbConnection = DriverManager.getConnection(url, "root", "password");
-      
-            if (dbConnection != null) {
-              System.out.println("Successfully connected to MySQL database imdbdb");
-              
-
-              String query = "SELECT * FROM series";
-              Statement stmt = dbConnection.createStatement();
-              ResultSet rs = stmt.executeQuery(query);
-              
-              while(rs.next()){
-                  System.out.println(rs.getString(1)); 
-              }
-              dbConnection.close();
-            }
-      
-          } catch (SQLException ex) {
-            System.out.println("An error occurred while connecting MySQL databse");
-            ex.printStackTrace();
-          }
       
         }
 
