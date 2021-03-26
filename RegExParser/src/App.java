@@ -14,18 +14,14 @@ public class App {
         readFile.FileReaderParseCSV("RegExParser/src/testMovies.list", csvparser);
         csvparser.createCSV();
 
+        dbm.executeScript("RegExParser/src/sql_scripts/createDB.sql");
         dbm.executeScript("RegExParser/src/sql_scripts/loadCSV.sql");
 
-
       
-        }
-
-        
-      
-      
+    }
 
         // Connection conn = DriverManager.getConnection("jdbc:mysql//localhost:3306/mysql", "root", "password");
         // conn.prepareStatement("LOAD DATA INFILE'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/series.csv' INTO TABLE series FIELDS TERMINATED BY '|' LINES TERMINATED BY '\n' IGNORE 1 ROWS;").executeQuery();
 
-    }
+}
 

@@ -1,5 +1,5 @@
 use imdbdb;
-CREATE TABLE MOVIE (
+CREATE TABLE IF NOT EXISTS MOVIE (
     movie_title VARCHAR(255) NOT NULL,
     director VARCHAR(255) NOT NULL,
     location VARCHAR(255),
@@ -8,7 +8,7 @@ CREATE TABLE MOVIE (
     PRIMARY KEY (movie_title)
 );
 
-CREATE TABLE SERIES
+CREATE TABLE IF NOT EXISTS SERIES
     (title VARCHAR(255) not NULL,
     year_start INTEGER(4) not NULL,
     year_end VARCHAR(4) not NULL,
@@ -16,21 +16,21 @@ CREATE TABLE SERIES
     id INTEGER(10) auto_increment not NULL,
     PRIMARY KEY (id));
     
-CREATE TABLE ACTOR
+CREATE TABLE IF NOT EXISTS ACTOR
     (actorName VARCHAR(255) not NULL,
     PRIMARY KEY(actorName));
 
- CREATE TABLE ACTRESS
+ CREATE TABLE IF NOT EXISTS ACTRESS
     (actressName VARCHAR(255) not NULL,
     PRIMARY KEY(actressName));
   
-CREATE TABLE CASTING
+CREATE TABLE IF NOT EXISTS CASTING
     (movie_title VARCHAR(255) not NULL,
     castID INTEGER(10) auto_increment not NULL,
     castmember VARCHAR(255) not NULL,
     PRIMARY KEY (castID));  
 
-CREATE TABLE EPISODE (
+CREATE TABLE IF NOT EXISTS EPISODE (
     title VARCHAR(255) NOT NULL,
     running_time VARCHAR(255),
     location VARCHAR(255),
