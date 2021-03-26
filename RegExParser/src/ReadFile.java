@@ -3,13 +3,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.Matcher;
 
 
 public class ReadFile {
     private Parser parser = new Parser();
-    public SoundtrackParser soundtrackParser = new SoundtrackParser();
+    public SoundtrackAssembler soundtrackAssembler = new SoundtrackAssembler();
+    public PersonAssembler personAssembler = new PersonAssembler();
     public csvParser csvparser = new csvParser();
     private Matcher matcher;
     
@@ -49,7 +49,9 @@ public class ReadFile {
             
             String line = reader.readLine();
 
-            if(filename.contains("soundtracks")){
+            //Voor de soundtracks
+            //Miel
+            if(filename.contains("soundtracks")){ //De info wordt nog niet toegevoegd
                 ArrayList<String> soundLinesMovies = new ArrayList<String>();
                 ArrayList<String> soundLinesSeries = new ArrayList<String>();
 
@@ -57,16 +59,21 @@ public class ReadFile {
 
                 while(line != null){
                     type = parser.getParseType(line, filename);
+                    if(type == "blank"){
+                        line = reader.readLine();
+                        continue;
+                    }
+
                     matcher = parser.getMatcherSoundtrack(line, type);
 
                     if(type == "soundtrackmovie"){
                         listType = "movies"; 
-                        soundtrackParser.newSet(matcher, type);
+                        soundtrackAssembler.newSet(matcher, type);
                     }else if(type == "soundtrackseries"){
                         listType = "series"; 
-                        soundtrackParser.newSet(matcher, type);
+                        soundtrackAssembler.newSet(matcher, type);
                     }else if(type == "soundtracksong"){
-                        soundtrackParser.addSongToSet(line);
+                        soundtrackAssembler.addSongToSet(line);
                     }else if(type == "songinfo"){
                         //soundtrackParser.addInfoToSet(line);
                         line = reader.readLine();
@@ -74,9 +81,9 @@ public class ReadFile {
                     }
                     if(type != "soundtrackmovie" && type != "soundtrackseries"){
                         if(listType == "movies"){
-                            soundLinesMovies.add(soundtrackParser.getSongLine());
+                            soundLinesMovies.add(soundtrackAssembler.getSongLine());
                         }else if (listType == "series"){
-                            soundLinesSeries.add(soundtrackParser.getSongLine());
+                            soundLinesSeries.add(soundtrackAssembler.getSongLine());
                         }
                     }
                     line = reader.readLine();
@@ -87,14 +94,54 @@ public class ReadFile {
 
                 csvparser.setLines(soundLinesSeries);
                 csvparser.createCSV("soundtrackseries");
+            
+            //Miel
+            }else if(filename.contains("actors") || filename.contains("actresses") || filename.contains("directors")){
+                ArrayList<String> personLines = new ArrayList<String>();
+                String personType = "actor";
 
+                if(filename.contains("actors")){
+                    personType = "actor";
+                }else if(filename.contains("actresses")){
+                    personType = "actress";
+                }else if(filename.contains("directors")){
+                    personType = "director";
+                }
 
+                while(line != null){
+                    type = parser.getParseType(line, filename);
+                    if(type == "blank"){
+                        line = reader.readLine();
+                        continue;
+                    }
 
+                    matcher = parser.getMatcherActor(line, type);
 
+                    if(type == "withtitle"){ // naam + movie
+                        personAssembler.newSet(matcher, type, personType);
+                    }else if(type == "actormovie"){ // alleen movie
+                        personAssembler.addToSet(matcher, "movie", personType);
+                    }else if(type == "actorepisode"){ // alleen episide
+                        personAssembler.addToSet(matcher, "series", personType);
+                    }
+                    
+                    personLines.add(personAssembler.getPersonLine());
+                    
+                    line = reader.readLine();
+                }
 
-                //System.out.println("Type: " + type);
+                if(filename.contains("actors")){
+                    csvparser.setLines(personLines);
+                    csvparser.createCSV("actors");
 
+                }else if (filename.contains("actresses")){
+                    csvparser.setLines(personLines);
+                    csvparser.createCSV("actresses");
 
+                }else if (filename.contains("directors")){
+                    csvparser.setLines(personLines);
+                    csvparser.createCSV("directors");
+                }
 
             }else{
                 while(line != null){
@@ -102,8 +149,6 @@ public class ReadFile {
                     matcher = parser.getMatcher(line, type);
 
                     parser.parse(matcher, csvp, filename);
-
-                    //System.out.println("Type: " + type);
 
                     line = reader.readLine();
                 }

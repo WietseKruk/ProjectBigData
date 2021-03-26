@@ -1,11 +1,9 @@
 import java.util.ArrayList;
-import java.util.List;
 import java.util.regex.*;
 
 //Miel
-public class SoundtrackParser {
+public class SoundtrackAssembler {
 
-    public ArrayList<String> set = new ArrayList<String>();
     public String songLine;
     public String movieName;
     public String seriesName;
