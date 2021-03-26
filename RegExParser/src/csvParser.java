@@ -55,7 +55,7 @@ public class csvParser {
                 if(writer != null)
                     writer.close();
 
-                String url = "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/";
+                String url = "E:/Docs/School/P3/PBigData/ProjectBigData/";
                 nameFile = url + type + ".csv";
                 myfile = new File(nameFile);
                 writer = new FileWriter(myfile, true);
@@ -80,9 +80,6 @@ public class csvParser {
                         case "series" : 
                                 headerline = "SERIE|SUSPENDED|JAAR_START|JAAR_EIND";
                             break;
-                        case "actormovie":
-                                headerline = "";
-                            break;
                         case "location":
                                 headerline = "TITEL|JAAR|DEEL|PLATFORM|LOCATIE";
                             break;
@@ -104,12 +101,15 @@ public class csvParser {
                         case "soundtrackseries":
                                 headerline = "TITEL|JAAR|EPISODE|SUSPENDED|NUMMER_TITEL";
                             break;
-                        case "actorwithmovietitle":
-                                headerline = "";
+                        case "actors":
+                                headerline = "NAME|MOVIE_OF_SERIES|TITEL|JAAR|DEEL|PLATFORM|EPISODE|SUSPENDED|VOICE|CREDIT|PLAYED";
                             break;
-                        case "actorwitseriestitle":
-                                headerline = "";
-                            break;
+                        case "actresses":
+                            headerline = "NAME|MOVIE_OF_SERIES|TITEL|JAAR|DEEL|PLATFORM|EPISODE|SUSPENDED|VOICE|CREDIT|PLAYED";
+                        break;
+                        case "directors":
+                            headerline = "NAME|MOVIE_OF_SERIES|TITEL|JAAR|DEEL|PLATFORM|EPISODE|SUSPENDED|CREDIT";
+                        break;
                     }
                 
                 writer.write(headerline + "\n");
