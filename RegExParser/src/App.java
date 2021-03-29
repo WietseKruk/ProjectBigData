@@ -14,7 +14,7 @@ public class App {
         readFile.FileReaderParseCSV("RegExParser/src/testMovies.list", csvparser);
         csvparser.createCSV();
 
-        dbm.executeScript("RegExParser/src/sql_scripts/createDB.sql");
+        dbm.executeScript("RegExParser/src/sql_scripts/createDB.sql"); //Patrick
         dbm.executeScript("RegExParser/src/sql_scripts/loadCSV.sql");
 
       

@@ -32,7 +32,7 @@ public class DBmanager {
         }
     }  
 
-    public ResultSet executeQuery(String query) throws SQLException{ //Patrick en Max
+    public ResultSet executeQuery(String query) throws SQLException{ //Patrick
         ResultSet rs;
         try {
             Statement stmt = dbConnection.createStatement();
