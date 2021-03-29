@@ -17,6 +17,11 @@ public class App {
         dbm.executeScript("RegExParser/src/sql_scripts/createDB.sql"); //Patrick
         dbm.executeScript("RegExParser/src/sql_scripts/loadCSV.sql");
 
+        ResultSet rs = dbm.executeSQL("SELECT * FROM series WHERE year_start=2004");
+
+        while(rs.next()){
+            System.out.println(rs.getString(1));
+        }
       
     }
 
