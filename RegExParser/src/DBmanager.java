@@ -21,6 +21,8 @@ public class DBmanager {
   
             if (dbConnection != null) {
                 System.out.println("Successfully connected to MySQL database: " + DB_NAME);
+
+                
             }
         } 
         catch (SQLException ex) {
@@ -30,6 +32,18 @@ public class DBmanager {
         }
     }  
 
+    public ResultSet executeQuery(String query) throws SQLException{ //Patrick
+        ResultSet rs;
+        try {
+            Statement stmt = dbConnection.createStatement();
+            rs = stmt.execute(query);
+        }
+        catch(SQLException e){
+            System.out.println(e);
+        }
+        return rs;
+
+    }
 
 
     public void executeScript(String url) throws SQLException{
