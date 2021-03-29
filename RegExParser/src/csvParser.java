@@ -56,7 +56,7 @@ public class csvParser {
                     if(myfile.createNewFile()) { // create new file on location
                         System.out.println("File created: " + myfile.getName());
                     }else {
-                        //System.out.println("File " + nameFile + " does already exist");
+                        break;
                     }
 
                     this.type = type; // set type
@@ -94,7 +94,7 @@ public class csvParser {
                 //System.out.println(lines.get(i));
             }
             if(writer != null)
-            writer.close();
+                writer.close();
         }else {
             System.out.println("no lines are set up for parsing. Call convertToCVSLine(String s) first");
         }
