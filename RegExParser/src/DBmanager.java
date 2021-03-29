@@ -16,21 +16,31 @@ public class DBmanager {
     private Connection dbConnection = null;
 
     public DBmanager(){
+        createConn();
+    }  
+
+    /**
+     * 
+     * @return True als verbinding al bestaat of is gemaakt, false als er geen verbinding kan worden gemaakt.
+     */
+    public boolean createConn(){
+        if(dbConnection != null)
+            return true;
         try {  
             dbConnection = DriverManager.getConnection(URL + DB_NAME, DB_USER, DB_PASS);
   
             if (dbConnection != null) {
                 System.out.println("Successfully connected to MySQL database: " + DB_NAME);
-
-                
+                return true;
             }
         } 
         catch (SQLException ex) {
             System.out.println("An error occurred while connecting to MySQL databse: " + DB_NAME);
             ex.printStackTrace();
-            
+            return false;
         }
-    }  
+        return false;
+    }
 
     public ResultSet executeQuery(String query) throws SQLException{ //Patrick
         ResultSet rs;
@@ -80,17 +90,5 @@ public class DBmanager {
 catch(IOException ex) {
 }
     }
-
-
-
-            //String query = "SELECT * FROM series";
-            //Statement stmt = dbConnection.createStatement();
-            //ResultSet rs = stmt.executeQuery(query);
-          
-        //   while(rs.next()){
-        //     System.out.println(rs.getString(1)); 
-        //     }
-        // dbConnection.close();
-
-      
+ 
 }
