@@ -42,17 +42,16 @@ public class DBmanager {
         return false;
     }
 
-    public ResultSet executeQuery(String query) throws SQLException{ //Patrick
+    public ResultSet executeSQL(String query) throws SQLException{ //Patrick
         ResultSet rs;
         try {
             Statement stmt = dbConnection.createStatement();
-            rs = stmt.execute(query);
+            rs = stmt.executeQuery(query);
         }
         catch(SQLException e){
             System.out.println(e);
         }
         return rs;
-
     }
 
 
