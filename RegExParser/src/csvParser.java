@@ -56,7 +56,7 @@ public class csvParser {
                     if(myfile.createNewFile()) { // create new file on location
                         System.out.println("File created: " + myfile.getName());
                     }else {
-                        break;
+                        continue;
                     }
 
                     this.type = type; // set type
