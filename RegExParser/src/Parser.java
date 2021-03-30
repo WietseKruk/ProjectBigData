@@ -5,8 +5,8 @@ import java.util.regex.*;
 public class Parser {
     
     //Wietse
-    final String movieExpression = "^([^\\\"].*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{.*\\})?\\s*\\d{4}|\\?{4}";
-    final String episodeExpression = "(^\\\".*\\\")\\s*\\((\\d{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{[^\\{].*?\\})?\\s(\\{.*\\})?\\s*(\\d{4}|\\?{4})";
+    final String movieExpression = "^(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{.*\\})?\\s*(\\d{4}|\\?{4})";
+    final String episodeExpression =  "^(\\\".*\\\")\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{[^\\{].*?\\})?\\s(\\{.*\\})?\\s*(\\d{4}|\\?{4})";
     final String seriesExpression =  "^\\\"(.*)\\\" \\(\\d{4}(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{.*\\})?\\s*(\\d{4})-(\\d{4}|\\?{4})";
     final String actorMovieExpression = "[\\t]{3}(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\{\\{.*\\}\\})?\\s*(\\(voice\\))?\\s*(\\(.*\\))?(\\[.*\\])?\\s*(\\<.*\\>)?$";
     final String actorEpisodeExpression = "[\\t]{3}\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{[^\\{].*\\})?\\s*(\\{.*\\})?\\s*(\\(voice\\))?\\s*(\\(.*\\))?\\s*(\\[.*\\])?\\s*(\\<\\d*\\>)?$";
@@ -110,6 +110,7 @@ public class Parser {
             default:
                 pattern = Pattern.compile(movieExpression);
                 System.out.println("Couldn't find expression, defaulting to movie");
+                System.out.println(line);
         }
 
         Matcher matcher = pattern.matcher(line);
