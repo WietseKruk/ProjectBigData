@@ -31,14 +31,14 @@ CREATE TABLE IF NOT EXISTS CASTING
     PRIMARY KEY (castID));  
 
 CREATE TABLE IF NOT EXISTS EPISODE (
-    title VARCHAR(255) NOT NULL,
+    series_title VARCHAR(255) NOT NULL,
+    series_year VARCHAR(255) NOT NULL,
+    quarter VARCHAR(3),
+    episode_title VARCHAR(255) NOT NULL,
+    filming_loc VARCHAR(255),
     running_time VARCHAR(255),
-    location VARCHAR(255),
-    castID INTEGER(10),
     seriesID INTEGER(10) NOT NULL,
-    PRIMARY KEY (TITLE),
-    FOREIGN KEY (castID)
-        REFERENCES CASTING (castID),
+    PRIMARY KEY (episode_title),
     FOREIGN KEY (seriesID)
         REFERENCES SERIES (id)
 );

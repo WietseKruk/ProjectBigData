@@ -90,10 +90,8 @@ public class ReadFile {
                 }
 
                 csvparser.setLines(soundLinesMovies);
-                csvparser.createCSV("soundtrackmovies");
-
                 csvparser.setLines(soundLinesSeries);
-                csvparser.createCSV("soundtrackseries");
+                
             
             //Miel
             }else if(filename.contains("actors") || filename.contains("actresses") || filename.contains("directors")){
@@ -132,15 +130,12 @@ public class ReadFile {
 
                 if(filename.contains("actors")){
                     csvparser.setLines(personLines);
-                    csvparser.createCSV("actors");
 
                 }else if (filename.contains("actresses")){
                     csvparser.setLines(personLines);
-                    csvparser.createCSV("actresses");
 
                 }else if (filename.contains("directors")){
                     csvparser.setLines(personLines);
-                    csvparser.createCSV("directors");
                 }
 
             }else{

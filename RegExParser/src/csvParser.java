@@ -30,7 +30,7 @@ public class csvParser {
     }
 
     public void setLines(ArrayList<String> data){
-        lines = data;
+        lines.addAll(data);
     }
 
     // Max Prakken
@@ -55,8 +55,6 @@ public class csvParser {
 
                     if(myfile.createNewFile()) { // create new file on location
                         System.out.println("File created: " + myfile.getName());
-                    }else {
-                        continue;
                     }
 
                     this.type = type; // set type

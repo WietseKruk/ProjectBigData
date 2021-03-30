@@ -43,7 +43,7 @@ public class DBmanager {
     }
 
     public ResultSet executeSQL(String query) throws SQLException{ //Patrick
-        ResultSet rs;
+        ResultSet rs = null;
         try {
             Statement stmt = dbConnection.createStatement();
             rs = stmt.executeQuery(query);
