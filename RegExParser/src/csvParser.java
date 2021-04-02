@@ -30,7 +30,7 @@ public class csvParser {
     }
 
     public void setLines(ArrayList<String> data){
-        lines = data;
+        lines.addAll(data);
     }
 
     // Max Prakken
@@ -55,8 +55,6 @@ public class csvParser {
 
                     if(myfile.createNewFile()) { // create new file on location
                         System.out.println("File created: " + myfile.getName());
-                    }else {
-                        continue;
                     }
 
                     this.type = type; // set type
@@ -106,13 +104,10 @@ public class csvParser {
                     return "TITEL|JAAR|DEEL|SUSPENDED|PLATFORM";
                 
             case "episode" :
-                    return "SERIE|JAAR_SERIE|EPISODE|JAAR_UITGEZONDEN";
+                    return "SERIE|JAAR_SERIE|DEEL|EPISODE|PLATFORM|JAAR_UITGEZONDEN";
                 
             case "series" : 
-                    return "SERIE|SUSPENDED|JAAR_START|JAAR_EIND";
-                
-            case "actormovie":
-                    return "";
+                    return "SERIE|DEEL|SUSPENDED|JAAR_START|JAAR_EIND|DIRECTOR|ID";
                 
             case "location":
                     return "TITEL|JAAR|DEEL|PLATFORM|LOCATIE";
@@ -135,12 +130,15 @@ public class csvParser {
             case "soundtrackseries":
                     return "TITEL|JAAR|EPISODE|SUSPENDED|NUMMER_TITEL";
                 
-            case "actorwithmovietitle":
-                    return "";
-                
-            case "actorwitseriestitle":
-                    return "";
-            
+            case "actors":
+                    return "NAME|MOVIE_OF_SERIES|TITEL|JAAR|DEEL|PLATFORM|EPISODE|SUSPENDED|VOICE|CREDIT|PLAYED";
+
+            case "actresses":
+                    return "NAME|MOVIE_OF_SERIES|TITEL|JAAR|DEEL|PLATFORM|EPISODE|SUSPENDED|VOICE|CREDIT|PLAYED";
+
+            case "directors":
+                    return "NAME|MOVIE_OF_SERIES|TITEL|JAAR|DEEL|PLATFORM|EPISODE|SUSPENDED|CREDIT";
+
             default:
                     return "";
         }
