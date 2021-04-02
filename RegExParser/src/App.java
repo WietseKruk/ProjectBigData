@@ -12,6 +12,7 @@ public class App {
         DBmanager dbm = new DBmanager();
 
         readFile.FileReaderParseCSV("RegExParser/src/movies.list", csvparser);
+
         csvparser.createCSV();
 
         dbm.executeScript("RegExParser/src/sql_scripts/createDB.sql"); //Patrick
