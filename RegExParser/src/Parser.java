@@ -109,7 +109,7 @@ public class Parser {
                 break;
             default:
                 pattern = Pattern.compile(movieExpression);
-                System.out.println("Couldn't find expression, defaulting to movie");
+                System.out.println("Couldn't match expression, defaulting to movie");
         }
 
         Matcher matcher = pattern.matcher(line);

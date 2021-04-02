@@ -10,7 +10,6 @@ public class ReadFile {
     private Parser parser = new Parser();
     public SoundtrackAssembler soundtrackAssembler = new SoundtrackAssembler();
     public PersonAssembler personAssembler = new PersonAssembler();
-    public csvParser csvparser = new csvParser();
     private Matcher matcher;
     
     public String type;
@@ -89,8 +88,8 @@ public class ReadFile {
                     line = reader.readLine();
                 }
 
-                csvparser.setLines(soundLinesMovies);
-                csvparser.setLines(soundLinesSeries);
+                csvp.setLines(soundLinesMovies);
+                csvp.setLines(soundLinesSeries);
                 
             
             //Miel
@@ -128,14 +127,8 @@ public class ReadFile {
                     line = reader.readLine();
                 }
 
-                if(filename.contains("actors")){
-                    csvparser.setLines(personLines);
-
-                }else if (filename.contains("actresses")){
-                    csvparser.setLines(personLines);
-
-                }else if (filename.contains("directors")){
-                    csvparser.setLines(personLines);
+                if(filename.contains("actors") || filename.contains("actresses") || filename.contains("directors")){
+                    csvp.setLines(personLines);
                 }
 
             }else{
