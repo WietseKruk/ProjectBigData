@@ -71,12 +71,7 @@ public class csvParser {
                     try {
                         String newLine = "";
 
-                        if(this.type.equals("series")) {
-                            newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "| |0\n";
-                        }
-                        else {
-                            newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "\n";
-                        }
+                        newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "\n";                       
 
                         //start writing in file here
                         writer.write(newLine);
