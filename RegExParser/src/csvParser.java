@@ -102,7 +102,7 @@ public class csvParser {
                     return "SERIE|JAAR_SERIE|DEEL|EPISODE|PLATFORM|JAAR_UITGEZONDEN";
                 
             case "series" : 
-                    return "SERIE|DEEL|SUSPENDED|JAAR_START|JAAR_EIND|DIRECTOR|ID";
+                    return "SERIE|DEEL|SUSPENDED|JAAR_START|JAAR_EIND";
                 
             case "location":
                     return "TITEL|JAAR|DEEL|PLATFORM|LOCATIE";

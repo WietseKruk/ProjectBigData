@@ -9,16 +9,10 @@
             "port": 3306,
             "askForPassword": true,
             "driver": "MySQL",
-<<<<<<< HEAD
             "name": "MySQL",
             "database": "imdbdb",
             "username": "root",
             "connectionTimeout": 60
-=======
-            "name": "mysql",
-            "database": "imdbdb",
-            "username": "root"
->>>>>>> de1fba53eed555092d626cc914631728f6916dbd
         }
     ],
     "java.project.referencedLibraries": [

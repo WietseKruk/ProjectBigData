@@ -11,11 +11,16 @@ public class App {
         csvParser csvparser = new csvParser();
         DBmanager dbm = new DBmanager();
 
-        readFile.FileReaderParseCSV("RegExParser/src/movies.list", csvparser);
+        // readFile.FileReaderParseCSV("RegExParser/src/actors.list", csvparser);
+        // readFile.FileReaderParseCSV("RegExParser/src/movies.list", csvparser);
+        // readFile.FileReaderParseCSV("RegExParser/src/soundtracks.list", csvparser);
+        // readFile.FileReaderParseCSV("RegExParser/src/actresses.list", csvparser);
+        // readFile.FileReaderParseCSV("RegExParser/src/genres.list", csvparser);
 
         csvparser.createCSV();
 
         dbm.executeScript("RegExParser/src/sql_scripts/createDB.sql"); //Patrick
+        dbm.executeScript("RegExParser/src/sql_scripts/createTempTables.sql");
         dbm.executeScript("RegExParser/src/sql_scripts/loadCSV.sql");
 
         ResultSet rs = dbm.executeSQL("SELECT * FROM series WHERE year_start=2004");
