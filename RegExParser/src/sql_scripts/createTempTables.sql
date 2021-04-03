@@ -1,5 +1,11 @@
 use imdbdb;
-CREATE TABLE IF NOT EXISTS TEMPMOVIES(title VARCHAR(255) NOT NULL, movie_year VARCHAR(4) NOT NULL, part VARCHAR(255), suspended VARCHAR(13), platform VARCHAR(255), movie_year_2 VARCHAR(4));
+CREATE TABLE IF NOT EXISTS TEMPMOVIES(
+    title VARCHAR(255) NOT NULL, 
+    movie_year VARCHAR(4) NOT NULL, 
+    part VARCHAR(255), 
+    suspended VARCHAR(13), 
+    platform VARCHAR(255), 
+    movie_year_2 VARCHAR(4));
 
 CREATE TABLE IF NOT EXISTS TEMPSERIES(
     title VARCHAR(255) NOT NULL,
