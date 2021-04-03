@@ -19,7 +19,7 @@ public class csvParser {
             }else if(i < data.size() - 1) { 
                 s+=data.get(i);
             }else {
-                s+= ";" + data.get(i);
+                s+= "¦" + data.get(i);
             }
         }
 
@@ -42,7 +42,7 @@ public class csvParser {
             File myfile = null;
 
             for(int i = 0; i < lines.size(); i++) { // loop through lines
-                String type = lines.get(i).substring(lines.get(i).lastIndexOf(";") + 1); // get type from line
+                String type = lines.get(i).substring(lines.get(i).lastIndexOf("¦") + 1); // get type from line
 
                 if(!type.equals(this.type)) { // if current type equals type
                     if(writer != null) // close writer if not null
@@ -71,7 +71,7 @@ public class csvParser {
                     try {
                         String newLine = "";
 
-                        newLine = lines.get(i).substring(0, lines.get(i).indexOf(";")) + "\n";                       
+                        newLine = lines.get(i).substring(0, lines.get(i).indexOf("¦")) + "\n";                       
 
                         //start writing in file here
                         writer.write(newLine);
