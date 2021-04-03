@@ -35,13 +35,18 @@ public class SoundtrackAssembler {
         }
     }
 
-    public void addSongToSet(String line){
+    public void addSongToSet(Matcher line){
+        String parsedline = "";
         if(setTypeMovie == true){
-            line = movieName + "|" + year + "|" + deel + "|" + platform + "|" + suspended + "|" + line + ";soundtrackmovies";
+            while(line.find()){
+                parsedline = movieName + "|" + year + "|" + deel + "|" + platform + "|" + suspended + "|" + line.group(1) + ";soundtrackmovies";
+            }
         }else if(setTypeMovie == false){
-            line = seriesName + "|" + year + "|" + episode + "|" + suspended + "|" + line + ";soundtrackseries";
+            while(line.find()){
+                parsedline = seriesName + "|" + year + "|" + episode + "|" + suspended + "|" + line.group(1) + ";soundtrackseries";
+            }
         }
-        songLine = line;
+        songLine = parsedline;
     }
 
     public void addInfoToSet(String line){

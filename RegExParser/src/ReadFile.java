@@ -72,7 +72,7 @@ public class ReadFile {
                         listType = "series"; 
                         soundtrackAssembler.newSet(matcher, type);
                     }else if(type == "soundtracksong"){
-                        soundtrackAssembler.addSongToSet(line);
+                        soundtrackAssembler.addSongToSet(matcher);
                     }else if(type == "songinfo"){
                         //soundtrackParser.addInfoToSet(line);
                         line = reader.readLine();
