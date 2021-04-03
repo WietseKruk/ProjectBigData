@@ -46,9 +46,9 @@ public class SoundtrackAssembler {
 
     public void addInfoToSet(String line){
         if(setTypeMovie == true)
-            songLine = line + ";soundtrackmovies";
+            songLine = line + "¦soundtrackmovies";
         else
-            songLine = line + ";soundtrackseries";
+            songLine = line + "¦soundtrackseries";
     }
 
     public String getSongLine(){

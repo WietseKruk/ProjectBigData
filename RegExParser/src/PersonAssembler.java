@@ -60,11 +60,11 @@ public class PersonAssembler {
             }
         }
         if(personType == "actor"){
-            parsedLine = parsedLine + ";actors";
+            parsedLine = parsedLine + "¦actors";
         }else if(personType == "actress")
-            parsedLine = parsedLine + ";actresses";
+            parsedLine = parsedLine + "¦actresses";
         else if(personType == "director")
-            parsedLine = parsedLine + ";directors";
+            parsedLine = parsedLine + "¦directors";
             personLine = parsedLine;
     }
 
