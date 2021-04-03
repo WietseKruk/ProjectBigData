@@ -3,11 +3,12 @@ use imdbdb;
 
 CREATE TABLE IF NOT EXISTS MOVIES (
     movie_title VARCHAR(255) NOT NULL,
+    movie_id INTEGER(10) auto_increment not NULL,
     director VARCHAR(255) NOT NULL,
     filming_loc VARCHAR(255),
     running_time FLOAT,
     genre VARCHAR(255),
-    PRIMARY KEY (movie_title)
+    PRIMARY KEY (movie_id)
 );
 
 CREATE TABLE IF NOT EXISTS SERIES(
@@ -15,18 +16,18 @@ CREATE TABLE IF NOT EXISTS SERIES(
     year_start INTEGER(4) not NULL,
     year_end VARCHAR(4) not NULL,
     director VARCHAR(255),
-    id INTEGER(10) auto_increment not NULL,
-    PRIMARY KEY (id));
+    seriesid INTEGER(10) auto_increment not NULL,
+    PRIMARY KEY (seriesid));
     
 CREATE TABLE IF NOT EXISTS ACTORS(
     actorName VARCHAR(255) not NULL,
     actorID INTEGER(10) auto_increment not NULL,
-    PRIMARY KEY(actorName));
+    PRIMARY KEY(actorID));
 
 CREATE TABLE IF NOT EXISTS ACTRESSES(
     actressName VARCHAR(255) not NULL,
     actressID INTEGER(10) auto_increment not NULL,
-    PRIMARY KEY(actressName));
+    PRIMARY KEY(actressID));
   
 CREATE TABLE IF NOT EXISTS CASTING(
     movie_title VARCHAR(255) not NULL,
@@ -42,8 +43,9 @@ CREATE TABLE IF NOT EXISTS EPISODES(
     series_title VARCHAR(255) not NULL,
     series_year VARCHAR(255) not NULL,
     episode_title VARCHAR(255) not NULL,
+    episode_id INTEGER(10) auto_increment not NULL, 
     filming_loc VARCHAR(255),
     running_time VARCHAR(255),
     seriesID INTEGER(10) NOT NULL,
-    PRIMARY KEY (episode_title),
+    PRIMARY KEY (episode_id),
     FOREIGN KEY (seriesID) REFERENCES SERIES (id));
