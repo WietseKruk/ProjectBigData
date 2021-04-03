@@ -55,7 +55,7 @@ public class PersonAssembler {
                 if(personType != "director")
                     parsedLine = personName + "|" + type + "|"+ line.group(1) + "|" + line.group(2) + "|" + line.group(3) + "|" + null + "|" + line.group(4) + "|" + line.group(5) + "|" + line.group(6) + "|" + line.group(7) + "|" + line.group(8);
                 else
-                    parsedLine = personName + "|" + type + "|"+ line.group(1) + "|" + line.group(2) + "|" + line.group(3) + "|" + null + "|" + line.group(4) + "|" + line.group(5) + "|" + line.group(7) + "|" + line.group(8);
+                    parsedLine = personName + "|" + type + "|"+ line.group(1) + "|" + line.group(2) + "|" + line.group(3) + "|" + null + "|" + line.group(4) + "|" + line.group(5) + "|" + line.group(7);
             
             }
         }

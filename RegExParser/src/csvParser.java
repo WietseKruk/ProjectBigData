@@ -111,13 +111,13 @@ public class csvParser {
                     return "TITEL|JAAR|DEEL|PLATFORM|AFLEVERING_TITEL|SUSPENDED|GENRE";
                 
             case "movieruntime":
-                    return "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|LOCATIE|TIJD|NOTITIES";
+                    return "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|LOCATIE|TIJD";
                 
             case "episoderuntime":
-                    return "TITEL|JAAR|DEEL|PLATFORM|AFLEVERING_TITEL|SUSPENDED|LOCATIE|TIJD|NOTITIES";
+                    return "TITEL|JAAR|DEEL|PLATFORM|AFLEVERING_TITEL|SUSPENDED|LOCATIE|TIJD";
                 
             case "seriesruntime":
-                    return "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|LOCATIE|TIJD|NOTITIES";
+                    return "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|LOCATIE|TIJD";
                 
             case "soundtrackmovies":
                     return "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|NUMMER_TITEL";

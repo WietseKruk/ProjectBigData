@@ -39,11 +39,11 @@ public class SoundtrackAssembler {
         String parsedline = "";
         if(setTypeMovie == true){
             while(line.find()){
-                parsedline = movieName + "|" + year + "|" + deel + "|" + platform + "|" + suspended + "|" + line.group(1) + ";soundtrackmovies";
+                parsedline = movieName + "|" + year + "|" + deel + "|" + platform + "|" + suspended + "|" + line.group(1) + "¦soundtrackmovies";
             }
         }else if(setTypeMovie == false){
             while(line.find()){
-                parsedline = seriesName + "|" + year + "|" + episode + "|" + suspended + "|" + line.group(1) + ";soundtrackseries";
+                parsedline = seriesName + "|" + year + "|" + episode + "|" + suspended + "|" + line.group(1) + "¦soundtrackseries";
             }
         }
         songLine = parsedline;
