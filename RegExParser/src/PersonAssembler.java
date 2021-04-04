@@ -33,14 +33,16 @@ public class PersonAssembler {
             }
 
             if(personType != "director")
-                parsedLine = personName + "|" + type + "|"+ line.group(2) + "|" + line.group(3) + "|" + line.group(4)+ "|" + line.group(5) + "|" + line.group(6) + "|" + line.group(7) + "|" + line.group(8) + "|" + line.group(9) + "|" + line.group(10);
+            //"NAME|MOVIE_OF_SERIES|TITEL|JAAR|DEEL|PLATFORM|EPISODE|SUSPENDED|VOICE|CREDIT|PLAYED"
+            //1NAME|                      2JAAR|3DEEL|4PLATFORM|5VOICE|6EPISODE|7SUSPENDED|8CREDIT|9PLAYED
+                parsedLine = personName + "|" + type + "|"+ line.group(2) + "|" + line.group(3) + "|" + line.group(4) + "|" + line.group(6)+ "|" + line.group(7) + "|" + line.group(5) + "|" + line.group(8) + "|" + line.group(9);
             else
-                parsedLine = personName + "|" + type + "|"+ line.group(2) + "|" + line.group(3) + "|" + line.group(4)+ "|" + line.group(5) + "|" + line.group(6) + "|" + line.group(7) + "|" + line.group(9);
+                parsedLine = personName + "|" + type + "|"+ line.group(2) + "|" + line.group(3) + "|" + line.group(4) + "|" + line.group(6)+ "|" + line.group(7) + "|" + line.group(5) + "|" + line.group(8);
             
             }else if(type == "movie"){
             
             if(line.matches()){
-                //"NAME|MOVIE_OF_SERIES|TITEL|JAAR|DEEL|PLATFORM|EPISODE|SUSPENDED|VOICE|CREDIT|PLAYED"
+
                 //1TITEL|2JAAR|3DEEL|4PLATFORM|  |5SUSPENDED|6VOICE|7CREDIT|8PLAYED"
                 if(personType != "director")
                     parsedLine = personName + "|" + type + "|"+ line.group(1) + "|" + line.group(2) + "|" + line.group(3) + "|" + line.group(4) + "|" + null + "|" + line.group(5) + "|" + line.group(6) + "|" + line.group(7) + "|" +line.group(8);
