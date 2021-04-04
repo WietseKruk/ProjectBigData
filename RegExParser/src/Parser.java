@@ -17,9 +17,9 @@ public class Parser {
     //Miel - genre
     final String genreExpression =  "^(.*)\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?\\s*(.*)";
     //Miel - runtime
-    final String movieRunTimesExpression =  "^([^\\\"].*[^\\\"])\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{.*\\})?\\s*(.*\\:)?(\\d*)\\s*(\\(.*\\))?$";
-    final String episodesRunTimesExpression = "^\\\"(.*)\\\"\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\{.*\\})\\s*(.*\\:)?(\\d*)\\s*(\\\\(.*\\\\))?$";
-    final String seriesRunTimesExpression = "^\\\"(.*)\\\"\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(.*\\:)?(\\d*)\\s*(\\(.*\\))?";
+    final String movieRunTimesExpression =  "^([^\\\"].*[^\\\"])\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{.*\\})?\\s*(.*\\:)?(.*)";
+    final String episodesRunTimesExpression = "^\\\"(.*)\\\"\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\{.*\\})\\s*(.*\\:)?(\\d*.?\\d*)\\s*(\\(.*\\))?";
+    final String seriesRunTimesExpression = "^\\\"(.*)\\\"\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(.*\\:)?(.*)\\s*(\\(.*\\))?";
     //Miel - soundstracks
     final String soundTrackMovieExpression = "^\\#\\s([^\\\"].*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{\\{.*\\}\\})?";
     final String soundTrackSeriesExpression = "^\\#\\s*\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?";
