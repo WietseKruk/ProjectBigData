@@ -19,24 +19,18 @@ CREATE TABLE IF NOT EXISTS SERIES(
     PRIMARY KEY (seriesid));
     
 CREATE TABLE IF NOT EXISTS ACTORS(
-    actorName VARCHAR(255) not NULL,
+    actorname VARCHAR(255) not NULL,
     actorID INTEGER(10) auto_increment not NULL,
-    PRIMARY KEY(actorID));
+    filetype VARCHAR(255),
+    title VARCHAR(255),
+    PRIMARY KEY (actorID));
 
 CREATE TABLE IF NOT EXISTS ACTRESSES(
     actressName VARCHAR(255) not NULL,
     actressID INTEGER(10) auto_increment not NULL,
+    filetype VARCHAR(255),
+    title VARCHAR(255),
     PRIMARY KEY(actressID));
-  
-CREATE TABLE IF NOT EXISTS CASTING(
-    movie_title VARCHAR(255) not NULL,
-    castID INTEGER(10) auto_increment not NULL,
-    actorID INTEGER(10),
-    actressID INTEGER(10),
-    PRIMARY KEY (castID),
-    FOREIGN KEY(actressID) REFERENCES ACTRESSES (actressID),
-    FOREIGN KEY(actorID) REFERENCES ACTORS (actorID));
-    
     
 CREATE TABLE IF NOT EXISTS EPISODES(
     series_title VARCHAR(255) not NULL,
@@ -44,6 +38,7 @@ CREATE TABLE IF NOT EXISTS EPISODES(
     episode_title VARCHAR(255) not NULL,
     episode_id INTEGER(10) auto_increment not NULL, 
     filming_loc VARCHAR(255),
+    director VARCHAR(255),
     running_time VARCHAR(255),
     seriesID INTEGER(10) NOT NULL,
     PRIMARY KEY (episode_id),
