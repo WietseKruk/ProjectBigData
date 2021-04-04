@@ -25,6 +25,16 @@ CREATE TABLE IF NOT EXISTS ACTORS(
     title VARCHAR(255),
     PRIMARY KEY (actorID));
 
+CREATE TABLE IF NOT EXISTS CASTING(
+    actorID INT(10),
+    actressID INT(10),
+    seriesID INT(10),
+    movieID INT(10),
+    FOREIGN KEY (seriesID) REFERENCES SERIES (seriesid),
+    FOREIGN KEY (actorID) REFERENCES ACTORS (actorID),
+    FOREIGN KEY (movieID) REFERENCES MOVIES (movie_id),
+    FOREIGN KEY (actressID) REFERENCES ACTRESSES (actressID));
+
 CREATE TABLE IF NOT EXISTS ACTRESSES(
     actressName VARCHAR(255) not NULL,
     actressID INTEGER(10) auto_increment not NULL,
