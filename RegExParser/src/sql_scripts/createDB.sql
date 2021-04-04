@@ -15,7 +15,6 @@ CREATE TABLE IF NOT EXISTS SERIES(
     title VARCHAR(255) not NULL,
     year_start INTEGER(4) not NULL,
     year_end VARCHAR(4) not NULL,
-    director VARCHAR(255),
     seriesid INTEGER(10) auto_increment not NULL,
     PRIMARY KEY (seriesid));
     
@@ -48,4 +47,4 @@ CREATE TABLE IF NOT EXISTS EPISODES(
     running_time VARCHAR(255),
     seriesID INTEGER(10) NOT NULL,
     PRIMARY KEY (episode_id),
-    FOREIGN KEY (seriesID) REFERENCES SERIES (id));
+    FOREIGN KEY (seriesID) REFERENCES SERIES (seriesid));
