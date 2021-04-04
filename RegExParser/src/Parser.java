@@ -12,7 +12,7 @@ public class Parser {
     final String actorEpisodeExpression = "[\\t]{3}\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{[^\\{].*\\})?\\s*(\\{.*\\})?\\s*(\\(voice\\))?\\s*(\\(.*\\))?\\s*(\\[.*\\])?\\s*(\\<\\d*\\>)?$";
     
     //Patrick
-    final String locationExpression = "^(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(.*)";
+    final String locationExpression = "^(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?\\s*(.*)";
 
     //Miel - genre
     final String genreExpression =  "^(.*)\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?\\s*(.*)";
