@@ -33,11 +33,11 @@ public class PersonAssembler {
             }
 
             if(personType != "director")
-            //"NAME|MOVIE_OF_SERIES|TITEL|JAAR|DEEL|PLATFORM|EPISODE|SUSPENDED|VOICE|CREDIT|PLAYED"
-            //1NAME|                      2JAAR|3DEEL|4PLATFORM|5VOICE|6EPISODE|7SUSPENDED|8CREDIT|9PLAYED
-                parsedLine = personName + "|" + type + "|"+ line.group(2) + "|" + line.group(3) + "|" + line.group(4) + "|" + line.group(6)+ "|" + line.group(7) + "|" + line.group(5) + "|" + line.group(8) + "|" + line.group(9);
+            //"NAME|MOVIE_OF_SERIES|                         TITEL|                  JAAR|                   DEEL|                PLATFORM|           EPISODE|                  SUSPENDED|   VOICE|    CREDIT|PLAYED"
+            //1NAME|                                         2FILMNAAM|              3JAAR|                 4DEEL|               5PLATFORM|            7EPISODE|                8SUSPENDED|   6VOICE|9CREDIT|10PLAYED
+                parsedLine = personName + "|" + type + "|"+ line.group(2) + "|" + line.group(3) + "|" + line.group(4) + "|" + line.group(5)+ "|" + line.group(7) + "|" + line.group(8) + "|" + line.group(6) + "|" + line.group(9)+ "|" + line.group(10);
             else
-                parsedLine = personName + "|" + type + "|"+ line.group(2) + "|" + line.group(3) + "|" + line.group(4) + "|" + line.group(6)+ "|" + line.group(7) + "|" + line.group(5) + "|" + line.group(8);
+                parsedLine = personName + "|" + type + "|"+ line.group(2) + "|" + line.group(3) + "|" + line.group(4) + "|" + line.group(5)+ "|" + line.group(7) + "|" + line.group(8) + "|" + line.group(6)+ "|" + line.group(9);
             
             }else if(type == "movie"){
             
