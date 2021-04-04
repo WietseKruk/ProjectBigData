@@ -5,7 +5,6 @@ CREATE TABLE IF NOT EXISTS MOVIES (
     movie_title VARCHAR(255) NOT NULL,
     movie_id INTEGER(10) auto_increment not NULL,
     director VARCHAR(255) NOT NULL,
-    filming_loc VARCHAR(255),
     running_time FLOAT,
     genre VARCHAR(255),
     PRIMARY KEY (movie_id)
@@ -53,3 +52,10 @@ CREATE TABLE IF NOT EXISTS EPISODES(
     seriesID INTEGER(10) NOT NULL,
     PRIMARY KEY (episode_id),
     FOREIGN KEY (seriesID) REFERENCES SERIES (seriesid));
+
+    CREATE TABLE IF NOT EXISTS LOCATION (
+    location_name VARCHAR(255) NOT NULL,
+    location_id INTEGER(10) auto_increment NOT NULL,
+    movie_id INTEGER(10),
+    PRIMARY KEY (locaton_id)
+    FOREIGN KEY (movie_id) REFERENCES MOVIES (movie_id));
