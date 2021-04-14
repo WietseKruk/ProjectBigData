@@ -37,7 +37,7 @@ public class PersonAssembler {
             //1NAME|                                         2FILMNAAM|              3JAAR|                 4DEEL|               5PLATFORM|            7EPISODE|                8SUSPENDED|   6VOICE|9CREDIT|10PLAYED
                 parsedLine = personName + "|" + type + "|"+ line.group(2) + "|" + line.group(3) + "|" + line.group(4) + "|" + line.group(5)+ "|" + line.group(7) + "|" + line.group(8) + "|" + line.group(6) + "|" + line.group(9)+ "|" + line.group(10);
             else
-                parsedLine = personName + "|" + type + "|"+ line.group(2) + "|" + line.group(3) + "|" + line.group(4) + "|" + line.group(5)+ "|" + line.group(7) + "|" + line.group(8) + "|" + line.group(6)+ "|" + line.group(9);
+                parsedLine = personName + "|" + type + "|"+ line.group(2) + "|" + line.group(3) + "|" + line.group(4) + "|" + line.group(5)+ "|" + line.group(7) + "|" + line.group(8) + "|" + line.group(9);
             
             }else if(type == "movie"){
             
