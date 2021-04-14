@@ -28,7 +28,7 @@ public class Parser {
     final String soundTrackSongExpression = "^\\-\\s\\\"(.*)\\\"\\\\?\\s*?(\\(.*\\))?";
     final String soundTrackInfoExpression = "^[^#^-]\\s(.*)";
     //Miel - actors/actresses + directors
-    final String withTitleExpression = "^([^\\s].*)\\t(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\(voice\\))?\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?(\\(.*\\))?\\s*(\\[.*\\])?\\s*(\\<\\d*\\>)?$";
+    final String withTitleExpression = "^([^\\s].*)\\t(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\(voice\\))?\\s*(\\{[^\\\\\\{].*?\\})?\\s*(\\{.*\\})?\\s*(\\(.*\\))?\\s*(\\[.*\\])?\\s*(\\<\\d*\\>)?$";
     
 
     //Wietse / Miel aangevuld
