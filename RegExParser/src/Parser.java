@@ -6,14 +6,16 @@ public class Parser {
     
     //Wietse
     final String movieExpression = "^(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{.*\\})?\\s*(\\d{4}|\\?{4})";
-    final String episodeExpression =  "^(\\\".*\\\")\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{[^\\{].*?\\})?\\s(\\{.*\\})?\\s*(\\d{4}|\\?{4})";
+    final String episodeExpression =  "^\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{[^\\{].*?\\})?\\s(\\{.*\\})?\\s*(\\d{4}|\\?{4})";
     final String seriesExpression =  "^\\\"(.*)\\\" \\(\\d{4}(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{.*\\})?\\s*(\\d{4})-(\\d{4}|\\?{4})";
     final String actorMovieExpression = "[\\t]{3}(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\{\\{.*\\}\\})?\\s*(\\(voice\\))?\\s*(\\(.*\\))?(\\[.*\\])?\\s*(\\<.*\\>)?$";
     final String actorEpisodeExpression = "[\\t]{3}\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{[^\\{].*\\})?\\s*(\\{.*\\})?\\s*(\\(voice\\))?\\s*(\\(.*\\))?\\s*(\\[.*\\])?\\s*(\\<\\d*\\>)?$";
     
     //Patrick
-    final String locationExpression = "^(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?\\s*(.*)";
-
+    //final String locationExpression = "^(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?\\s*(.*)";
+    final String locationMovieExpression = "^([^\\\"].*[^\\\"])\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?\\s*(.*)";
+    final String locationEpisodeExpression = "^\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{[^\\{].*?\\})\\s*(\\{.*\\})?\\s*(.*)";
+    final String locationSeriesExpression = "^\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{.*\\})?\\s*(.*)";
     //Miel - genre
     final String genreExpression =  "^(.*)\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?\\s*(.*)";
     //Miel - runtime
@@ -41,8 +43,15 @@ public class Parser {
 
         }else if(filename.contains("genres")){
             return "genre";
+            
         }else if(filename.contains("locations")){
-            return "location";
+            if(line.matches(locationMovieExpression))
+                return "movielocation";
+                else if(line.matches(locationEpisodeExpression))
+                return "episodelocation";
+                else if(line.matches(locationSeriesExpression))
+                return "serieslocation";
+
         }else if(filename.contains("running")){
             if(line.matches(movieRunTimesExpression))
                 return "movieruntime";
@@ -50,6 +59,7 @@ public class Parser {
                 return "episoderuntime";
             else if(line.matches(seriesRunTimesExpression))
                 return "seriesruntime";
+
         }else if(filename.contains("soundtracks")){
             if(line.matches(soundTrackMovieExpression))
                 return "soundtrackmovie";
@@ -92,8 +102,14 @@ public class Parser {
             case "series":
                 pattern = Pattern.compile(seriesExpression);
                 break;
-            case "location":
-                pattern = Pattern.compile(locationExpression);
+            case "movielocation":
+                pattern = Pattern.compile(locationMovieExpression);
+                break;
+            case "episodelocation":
+                pattern = Pattern.compile(locationEpisodeExpression);
+                break;
+            case "serieslocation":
+                pattern = Pattern.compile(locationSeriesExpression);
                 break;
             case "genre":
                 pattern = Pattern.compile(genreExpression);

@@ -104,20 +104,26 @@ public class csvParser {
             case "series" : 
                     return "SERIE|DEEL|SUSPENDED|JAAR_START|JAAR_EIND";
                 
-            case "location":
-                    return "TITEL|JAAR|DEEL|PLATFORM|LOCATIE";
+            case "movielocation":
+                    return "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|LOCATIE";
+
+            case "episodelocation":
+                    return "TITEL|JAAR|DEEL|PLATFORM|EPISODE|SUSPENDED|LOCATIE";
+
+            case "serieslocation":
+                    return "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|LOCATIE";
                 
             case "genre":
                     return "TITEL|JAAR|DEEL|PLATFORM|AFLEVERING_TITEL|SUSPENDED|GENRE";
                 
             case "movieruntime":
-                    return "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|LOCATIE|TIJD";
+                    return "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|LOCATIE|TIJD|NOTES";
                 
             case "episoderuntime":
-                    return "TITEL|JAAR|DEEL|PLATFORM|AFLEVERING_TITEL|SUSPENDED|LOCATIE|TIJD";
+                    return "TITEL|JAAR|DEEL|AFLEVERING_TITEL|SUSPENDED|LOCATIE|TIJD|NOTES";
                 
             case "seriesruntime":
-                    return "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|LOCATIE|TIJD";
+                    return "TITEL|JAAR|DEEL|SUSPENDED|LOCATIE|TIJD";
                 
             case "soundtrackmovies":
                     return "TITEL|JAAR|DEEL|PLATFORM|SUSPENDED|NUMMER_TITEL";
