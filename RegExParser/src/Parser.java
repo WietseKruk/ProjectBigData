@@ -5,30 +5,30 @@ import java.util.regex.*;
 public class Parser {
     
     //Wietse
-    final String movieExpression = "^(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{.*\\})?\\s*(\\d{4}|\\?{4})";
+    final String movieExpression = "^(.*)\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{.*\\})?\\s*(\\d{4}|\\?{4})";
     final String episodeExpression =  "^\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{[^\\{].*?\\})?\\s(\\{.*\\})?\\s*(\\d{4}|\\?{4})";
     final String seriesExpression =  "^\\\"(.*)\\\" \\(\\d{4}(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{.*\\})?\\s*(\\d{4})-(\\d{4}|\\?{4})";
-    final String actorMovieExpression = "[\\t]{3}(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\{\\{.*\\}\\})?\\s*(\\(voice\\))?\\s*(\\(.*\\))?(\\[.*\\])?\\s*(\\<.*\\>)?$";
+    final String actorMovieExpression =  "[\\t]{3}(.*)\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?(\\{\\{.*\\}\\})?\\s*(\\(voice\\))?\\s*(\\(.*\\))?(\\[.*\\])?\\s*(\\<.*\\>)?$";
     final String actorEpisodeExpression = "[\\t]{3}\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{[^\\{].*\\})?\\s*(\\{.*\\})?\\s*(\\(voice\\))?\\s*(\\(.*\\))?\\s*(\\[.*\\])?\\s*(\\<\\d*\\>)?$";
     
     //Patrick
     //final String locationExpression = "^(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?\\s*(.*)";
-    final String locationMovieExpression =  "^([^\\\"].*[^\\\"])\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{.*\\})?\\s*(.*)";
+    final String locationMovieExpression =  "^([^\\\"].*[^\\\"])\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{.*\\})?\\s*(.*)";
     final String locationEpisodeExpression = "^\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{[^\\{].*?\\})\\s*(\\{.*\\})?\\s*(.*)";
     final String locationSeriesExpression = "^\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{.*\\})?\\s*(.*)";
     //Miel - genre
-    final String genreExpression =  "^(.*)\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?\\s*(.*)";
+    final String genreExpression = "^\\\"?(.*)\\\"?\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{[^\\\\\\{].*?\\})?\\s*(\\{.*\\})?\\s*(.*)";
     //Miel - runtime
-    final String movieRunTimesExpression =  "^([^\\\"].*[^\\\"])\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{.*\\})?\\s*(.*\\:)?(.*)";
+    final String movieRunTimesExpression =  "^([^\\\"].*[^\\\"])\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{.*\\})?\\s*(.*\\:)?(.*)";
     final String episodesRunTimesExpression = "^\\\"(.*)\\\"\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{[^\\{].*?\\})\\s(\\{.*\\})?\\s*(.*\\:)?(\\d*.?\\d*)\\s*(\\(.*\\))?";
     final String seriesRunTimesExpression = "^\\\"(.*)\\\"\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{.*\\})?\\s*(.*\\:)?(.*)\\s*";
     //Miel - soundstracks
-    final String soundTrackMovieExpression = "^\\#\\s([^\\\"].*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{\\{.*\\}\\})?";
+    final String soundTrackMovieExpression = "^\\#\\s([^\\\"].*)\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\{\\{.*\\}\\})?";
     final String soundTrackSeriesExpression = "^\\#\\s*\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?";
     final String soundTrackSongExpression = "^\\-\\s\\\"(.*)\\\"\\\\?\\s*?(\\(.*\\))?";
     final String soundTrackInfoExpression = "^[^#^-]\\s(.*)";
     //Miel - actors/actresses + directors
-    final String withTitleExpression = "^([^\\s].*)\\t(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\(voice\\))?\\s*(\\{[^\\\\\\{].*?\\})?\\s*(\\{.*\\})?\\s*(\\(.*\\))?\\s*(\\[.*\\])?\\s*(\\<\\d*\\>)?$";
+    final String withTitleExpression = "^([^\\s].*)\\t(.*)\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\)|\\(VG\\))?\\s*(\\(voice\\))?\\s*(\\{[^\\\\\\{].*?\\})?\\s*(\\{.*\\})?\\s*(\\(.*\\))?\\s*(\\[.*\\])?\\s*(\\<\\d*\\>)?$";
     
 
     //Wietse / Miel aangevuld
