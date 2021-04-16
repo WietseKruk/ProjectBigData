@@ -13,7 +13,7 @@ public class Parser {
     
     //Patrick
     //final String locationExpression = "^(.*)\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{[^\\{].*?\\})?\\s*(\\{.*\\})?\\s*(.*)";
-    final String locationMovieExpression = "^([^\\\"].*|[a-zA-z][^\\\"])\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{.*\\})?\\s*(.*)";
+    final String locationMovieExpression = "^([^\\\"].*?|[a-zA-z][^\\\"])\\s\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{.*\\})?\\s*(.*)$";
     final String locationEpisodeExpression = "^\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{[^\\{].*?\\})\\s*(\\{.*\\})?\\s*(.*)";
     final String locationSeriesExpression = "^\\\"(.*)\\\"\\s*\\((\\d{4}|\\?{4})(\\/I[A-Z]*|\\/V[A-Z]*|\\/X[A-Z]*)?\\)\\s*(\\(V\\)|\\(TV\\))?\\s*(\\{.*\\})?\\s*(.*)";
     //Miel - genre
